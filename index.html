@@ -343,7 +343,7 @@
 			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP1">Télécharger Contre-Rendue 1</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP2">Télécharger Contre-Rendue 2</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP3">Télécharger Contre-Rendue 3</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="downloadB1TP2">Télécharger Contre-Rendue Bloc 1 TP2</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP1">Télécharger Contre-Rendu Bloc 1 TP1 (Beauvallet)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="downloadB3TP1">Télécharger Contre-Rendu Bloc 3 TP-1</a>
         </div>
     </section>
@@ -763,13 +763,13 @@
             document.body.removeChild(link);
 			});
 
-			document.getElementById('downloadB1TP2').addEventListener('click', function(e) {
+			document.getElementById('download_bvl_B1TP1').addEventListener('click', function(e) {
             e.preventDefault();
             
             // Create a temporary link element
             const link = document.createElement('a');
-            link.href = 'B1TP2.pdf'; // This would be the actual CV file
-            link.download = 'B1TP2.pdf';
+            link.href = 'bvl_B1TP2.pdf'; // This would be the actual CV file
+            link.download = 'bvl_B1TP2.pdf';
             
             // Simulate click to trigger download
             document.body.appendChild(link);
@@ -823,6 +823,7 @@
 </body>
 
 </html>
+
 
 
 
