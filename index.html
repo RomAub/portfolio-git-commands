@@ -344,6 +344,7 @@
 			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP2">Télécharger Contre-Rendue 2</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP3">Télécharger Contre-Rendue 3</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="downloadB1TP2">Télécharger Contre-Rendue Bloc 1 TP2</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="downloadB3TP1">Télécharger Contre-Rendu Bloc 3 TP-1</a>
         </div>
     </section>
 
@@ -775,6 +776,20 @@
             link.click();
             document.body.removeChild(link);
 			});
+
+						document.getElementById('downloadB3TP1').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = 'B3TP1.pdf'; // This would be the actual CV file
+            link.download = 'B3TP1.pdf';
+            
+            // Simulate click to trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+			});
             
             // CV Download
             $('#downloadCV').click(function(e) {
@@ -808,5 +823,6 @@
 </body>
 
 </html>
+
 
 
