@@ -796,20 +796,6 @@ $('a[href*="#"]').on('click', function(e) {
             document.body.removeChild(link);
 			});
 
-						document.getElementById('downloadB3TP1').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'B3TP1.pdf'; // This would be the actual CV file
-            link.download = 'B3TP1.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
 						document.getElementById('download_stc_B1TP2').addEventListener('click', function(e) {
             e.preventDefault();
             
@@ -927,6 +913,7 @@ $('a[href*="#"]').on('click', function(e) {
 </body>
 
 </html>
+
 
 
 
