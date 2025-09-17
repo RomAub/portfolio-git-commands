@@ -797,24 +797,7 @@
             document.body.removeChild(link);
 			});
 
-			
-            
-            // CV Download
-            $('#downloadCV').click(function(e) {
-                e.preventDefault();
-                
-                // Create a temporary link element
-                const link = document.createElement('a');
-                link.href = 'data:application/pdf;base64,' + base64EncodedPDF;
-                link.download = 'Romain_Aubree_CV.pdf';
-                
-                // Simulate click to trigger download
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            });
-
-									document.getElementById('download_stc_B1TP2').addEventListener('click', function(e) {
+												document.getElementById('download_stc_B1TP2').addEventListener('click', function(e) {
             e.preventDefault();
             
             // Create a temporary link element
@@ -899,6 +882,21 @@
                 document.body.removeChild(link);
             });
             
+            // CV Download
+            $('#downloadCV').click(function(e) {
+                e.preventDefault();
+                
+                // Create a temporary link element
+                const link = document.createElement('a');
+                link.href = 'data:application/pdf;base64,' + base64EncodedPDF;
+                link.download = 'Romain_Aubree_CV.pdf';
+                
+                // Simulate click to trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+            
             // Form submission
             $('#contactForm').on('submit', function(e) {
                 e.preventDefault();
@@ -916,6 +914,7 @@
 </body>
 
 </html>
+
 
 
 
