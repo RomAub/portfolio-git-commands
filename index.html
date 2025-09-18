@@ -349,6 +349,7 @@
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP3">Télécharger Contre-Rendu Bloc 1 TP-3 (Beauvallet)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier2_TD1P1">Télécharger Contre-Rendu Atelier 2 TD-1 Partie 1</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier3_TD1P2">Télécharger Contre-Rendu Atelier 3 TD-1 Partie 2</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP2P1>Télécharger Contre-Rendu Bloc 3 TP-2 Partie 1 (Sotoca)</a>
 			
         </div>
     </section>
@@ -852,13 +853,27 @@ $('a[href*="#"]').on('click', function(e) {
             document.body.removeChild(link);
 			});
 
-												document.getElementById('download_atelier3_TD1P2').addEventListener('click', function(e) {
+			document.getElementById('download_atelier3_TD1P2').addEventListener('click', function(e) {
             e.preventDefault();
             
             // Create a temporary link element
             const link = document.createElement('a');
             link.href = 'Atelier3TD1P2.pdf'; // This would be the actual CV file
             link.download = 'Atelier3TD1P2.pdf';
+            
+            // Simulate click to trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+			});
+
+			document.getElementById('download_stc_B3TP2P1').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = 'stc_B3TP2P1.pdf'; // This would be the actual CV file
+            link.download = 'stc_B3TP2P1.pdf';
             
             // Simulate click to trigger download
             document.body.appendChild(link);
@@ -880,7 +895,8 @@ $('a[href*="#"]').on('click', function(e) {
                 link.click();
                 document.body.removeChild(link);
             });
-            
+
+			 
             // CV Download
             $('#downloadCV').click(function(e) {
                 e.preventDefault();
@@ -913,6 +929,7 @@ $('a[href*="#"]').on('click', function(e) {
 </body>
 
 </html>
+
 
 
 
