@@ -340,9 +340,9 @@
             <p class="hero-subtitle">Étudiant en BTS SIO</p>
             <a href="#contact" class="btn btn-primary btn-lg me-2">Me contacter</a>
             <a href="#" class="btn btn-outline-light btn-lg" id="downloadCV">Télécharger mon CV</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP1">Télécharger Contre-Rendue 1</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP2">Télécharger Contre-Rendue 2</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP3">Télécharger Contre-Rendue 3</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP1">Télécharger Contre-Rendu 1</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP2">Télécharger Contre-Rendu 2</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP3">Télécharger Contre-Rendu 3</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP1">Télécharger Contre-Rendu Bloc 1 TP1 (Beauvallet)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B1TP2">Télécharger Contre-Rendu Bloc 1 TP-2 (Sotoca)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP1">Télécharger Contre-Rendu Bloc 3 TP-1 (Sotoca)</a>
@@ -350,6 +350,8 @@
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier2_TD1P1">Télécharger Contre-Rendu Atelier 2 TD-1 Partie 1</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier3_TD1P2">Télécharger Contre-Rendu Atelier 3 TD-1 Partie 2</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP2P1">Télécharger Contre-Rendu Bloc 3 TP-2 Partie 1 (Sotoca)</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP4">Télécharger Contre-Rendu Bloc 1 TP-4 (Beauvallet)</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="download_special_1">Télécharger Fiche FreeMind des commandes de l'invite de commande</a>
 			
         </div>
     </section>
@@ -880,6 +882,34 @@ $('a[href*="#"]').on('click', function(e) {
             link.click();
             document.body.removeChild(link);
 			});
+
+			document.getElementById('download_bvl_B1TP4').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = 'bvl_B1TP4.pdf'; // This would be the actual CV file
+            link.download = 'bvl_B1TP4.pdf';
+            
+            // Simulate click to trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+			});
+
+			document.getElementById('download_special_1').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = 'mindfree_commande.png'; // This would be the actual CV file
+            link.download = 'mindfree_commande.png';
+            
+            // Simulate click to trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+			});
             
             // CV Download
             $('#downloadCV').click(function(e) {
@@ -929,6 +959,7 @@ $('a[href*="#"]').on('click', function(e) {
 </body>
 
 </html>
+
 
 
 
