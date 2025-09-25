@@ -352,6 +352,7 @@
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP2P1">Télécharger Contre-Rendu Bloc 3 TP-2 Partie 1 (Sotoca)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP4">Télécharger Contre-Rendu Bloc 1 TP-4 (Beauvallet)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_special_1">Télécharger Fiche FreeMind des commandes de l'invite de commande</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier4_TD2P1">Télécharger Contre-Rendu Atelier 4 TD-2 Partie 1</a>
 			
         </div>
     </section>
@@ -910,6 +911,21 @@ $('a[href*="#"]').on('click', function(e) {
             link.click();
             document.body.removeChild(link);
 			});
+
+			document.getElementById('download_atelier4_TD2P1').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = 'Atelier4TD2P1.pdf'; // This would be the actual CV file
+            link.download = 'Atelier4TD2P1.pdf';
+            
+            // Simulate click to trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+			});
+
             
             // CV Download
             $('#downloadCV').click(function(e) {
@@ -959,6 +975,7 @@ $('a[href*="#"]').on('click', function(e) {
 </body>
 
 </html>
+
 
 
 
