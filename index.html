@@ -349,7 +349,7 @@
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP3">Télécharger Contre-Rendu Bloc 1 TP-3 (Beauvallet)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier2_TD1P1">Télécharger Contre-Rendu Atelier 2 TD-1 Partie 1</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier3_TD1P2">Télécharger Contre-Rendu Atelier 3 TD-1 Partie 2</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP2P1">Télécharger Contre-Rendu Bloc 3 TP-2 Partie 1 (Sotoca)</a>
+			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP2-4">Télécharger Contre-Rendu Bloc 3 TP-2-4 (Sotoca)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP4">Télécharger Contre-Rendu Bloc 1 TP-4 (Beauvallet)</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_special_1">Télécharger Fiche FreeMind des commandes de l'invite de commande</a>
 			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier4_TD2P1">Télécharger Contre-Rendu Atelier 4 TD-2 Partie 1</a>
@@ -871,13 +871,13 @@ $('a[href*="#"]').on('click', function(e) {
             document.body.removeChild(link);
 			});
 
-			document.getElementById('download_stc_B3TP2P1').addEventListener('click', function(e) {
+			document.getElementById('download_stc_B3TP2-4').addEventListener('click', function(e) {
             e.preventDefault();
             
             // Create a temporary link element
             const link = document.createElement('a');
-            link.href = 'stc_B3TP2P1.pdf'; // This would be the actual CV file
-            link.download = 'stc_B3TP2P1.pdf';
+            link.href = 'stc_B3TP2-4.pdf'; // This would be the actual CV file
+            link.download = 'stc_B3TP2-4.pdf';
             
             // Simulate click to trigger download
             document.body.appendChild(link);
@@ -990,6 +990,7 @@ $('a[href*="#"]').on('click', function(e) {
 </body>
 
 </html>
+
 
 
 
