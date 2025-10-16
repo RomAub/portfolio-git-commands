@@ -49,6 +49,41 @@
         .nav-link:hover {
             color: var(--accent-color) !important; /* Jaune doré au survol */
         }
+
+        /* --- Mise en évidence de l'élément TP Scolaires (TRÈS VISIBLE) --- */
+        .nav-item-highlight .nav-link {
+            color: var(--dark-color) !important; /* Couleur du texte sombre */
+            background-color: var(--accent-color); /* Fond Jaune Doré très visible */
+            border-radius: 50px; /* Forme de pilule */
+            padding: 8px 15px !important;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite; /* Ajout d'une légère animation d'appel à l'action */
+        }
+
+        .nav-item-highlight .nav-link:hover {
+            color: white !important; /* Texte blanc au survol */
+            background-color: var(--secondary-color); /* Change au survol pour le Rouge Corail */
+            transform: scale(1.05);
+        }
+
+        /* Annule la marge standard pour un affichage en pilule réussi */
+        .navbar .navbar-nav .nav-item-highlight .nav-link { 
+            margin: 0 10px !important; 
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(255, 193, 7, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+            }
+        }
+        /* Fin de Mise en évidence */
         
         /* Hero Section */
         .hero {
@@ -254,13 +289,13 @@
         .text-primary { /* Pour les titres de profs dans les TP */
             color: var(--primary-color) !important;
         }
-        .text-success { /* Pour les titres de profs dans les TP */
+        .text-secondary { /* Pour les titres de profs dans les TP */
             color: var(--secondary-color) !important;
         }
-        .text-info { /* Pour les titres d'ateliers */
+        .text-accent { /* Pour les titres d'ateliers */
             color: var(--accent-color) !important;
         }
-        .text-secondary { /* Pour les titres divers */
+        .text-dark { /* Pour les titres divers */
             color: var(--dark-color) !important;
         }
         
@@ -490,8 +525,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#projects">Projets</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tps">TP Scolaires</a> </li>
+                    <li class="nav-item nav-item-highlight">
+                        <a class="nav-link" href="#tps">TP Scolaires</a> 
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#experience">Expérience</a>
                     </li>
