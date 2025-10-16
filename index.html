@@ -9,23 +9,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #007bff; /* Changement de couleur pour un look plus "Tech" (Bleu) */
-            --secondary-color: #28a745; /* Vert pour les accents */
-            --accent-color: #17a2b8;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
+            --primary-color: #FF7043; /* Orange Solaire (plus lumineux) */
+            --secondary-color: #BF360C; /* Rouge Corail / Terre (plus foncé, riche) */
+            --accent-color: #FFC107; /* Jaune Doré */
+            --light-color: #FDF7F5; /* Blanc cassé doux */
+            --dark-color: #263238; /* Gris anthracite/bleu nuit pour le texte et fond */
         }
         
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--dark-color);
             scroll-behavior: smooth;
-            background-color: var(--light-color); /* Ajout d'un léger fond */
+            background-color: var(--light-color); 
         }
         
         /* Navigation */
         .navbar {
-            background-color: var(--dark-color); /* Barre de nav plus discrète */
+            background-color: var(--dark-color); 
             padding: 15px 0;
             transition: all 0.3s ease;
         }
@@ -47,12 +47,12 @@
         }
         
         .nav-link:hover {
-            color: var(--secondary-color) !important; /* Changement de couleur au survol */
+            color: var(--accent-color) !important; /* Jaune doré au survol */
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1507525428034-b723cf961cfe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MXxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Image coucher de soleil */
             background-size: cover;
             background-position: center;
             color: white;
@@ -61,10 +61,10 @@
         }
         
         .hero-img {
-            width: 180px; /* Taille légèrement ajustée */
+            width: 180px; 
             height: 180px;
             object-fit: cover;
-            border: 5px solid var(--secondary-color); /* Bordure en couleur secondaire */
+            border: 5px solid var(--primary-color); /* Bordure orange */
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
         
@@ -77,29 +77,40 @@
         .hero-subtitle {
             font-size: 1.6rem;
             margin-bottom: 40px;
-            color: var(--secondary-color);
+            color: var(--accent-color); /* Jaune doré pour le sous-titre */
         }
         
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
             transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .btn-primary:hover {
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
         }
 
         .btn-outline-light {
             border-color: white;
             color: white;
             transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .btn-outline-light:hover {
             background-color: white;
             color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        .badge.bg-success { /* Pour le badge BTS SIO */
+            background-color: var(--accent-color) !important;
+            color: var(--dark-color) !important;
         }
         
         /* Section General */
@@ -113,6 +124,7 @@
             font-weight: 700;
             margin-bottom: 50px;
             text-align: center;
+            color: var(--dark-color);
         }
         
         .section-title:after {
@@ -123,7 +135,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: var(--primary-color); /* Changement pour la couleur principale */
+            background-color: var(--primary-color); 
         }
         
         /* About Section */
@@ -156,7 +168,7 @@
         
         .skill-progress {
             height: 100%;
-            background-color: var(--primary-color); /* Couleur principale pour les barres de progrès */
+            background-color: var(--primary-color); 
             border-radius: 5px;
             transition: width 1s ease-in-out;
         }
@@ -165,6 +177,8 @@
             background-color: white;
             border: 1px solid #e9ecef;
             transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 10px;
         }
 
         .quality-card i {
@@ -173,22 +187,23 @@
 
         .quality-card:hover {
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
-            border-color: var(--secondary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
         }
         
         /* Projects Section */
         .project-card {
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
             transition: all 0.3s ease;
             margin-bottom: 30px;
             border: none;
         }
         
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px); /* Plus d'effet de "lift" */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Ombre encore plus prononcée */
         }
         
         .project-img {
@@ -200,10 +215,11 @@
             padding: 20px;
         }
 
-        /* TP Section (New) */
+        /* TP Section */
         .nav-tabs .nav-link {
             color: var(--dark-color) !important;
             border-color: #dee2e6 #dee2e6 #fff;
+            transition: all 0.3s ease;
         }
 
         .nav-tabs .nav-link.active {
@@ -212,21 +228,40 @@
             font-weight: 600;
         }
 
+        .nav-tabs .nav-link:hover {
+            border-color: var(--primary-color) var(--primary-color) #fff;
+        }
+
         .tp-list .list-group-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
             transition: background-color 0.3s;
+            border-left: 5px solid transparent; /* Bordure d'accent */
         }
         
         .tp-list .list-group-item:hover {
             background-color: var(--light-color);
+            border-left-color: var(--primary-color); /* Couleur d'accent au survol */
         }
 
         .tp-list .btn {
             font-size: 0.9rem;
             padding: 5px 15px;
+        }
+
+        .text-primary { /* Pour les titres de profs dans les TP */
+            color: var(--primary-color) !important;
+        }
+        .text-success { /* Pour les titres de profs dans les TP */
+            color: var(--secondary-color) !important;
+        }
+        .text-info { /* Pour les titres d'ateliers */
+            color: var(--accent-color) !important;
+        }
+        .text-secondary { /* Pour les titres divers */
+            color: var(--dark-color) !important;
         }
         
         /* Experience Section */
@@ -243,7 +278,7 @@
             left: 50%;
             width: 2px;
             height: 100%;
-            background-color: var(--secondary-color);
+            background-color: var(--secondary-color); /* Couleur secondaire pour la ligne */
             margin-left: -1px;
         }
         
@@ -260,8 +295,8 @@
             position: absolute;
             width: 16px;
             height: 16px;
-            border: 4px solid white;
-            background-color: var(--primary-color);
+            border: 4px solid var(--light-color); /* Bordure light pour contraste */
+            background-color: var(--primary-color); /* Point principal */
             top: 23px;
             border-radius: 50%;
             z-index: 1;
@@ -291,11 +326,17 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
         }
         
         .timeline-date {
             font-weight: 600;
-            color: var(--secondary-color);
+            color: var(--accent-color); /* Date en jaune doré */
             margin-bottom: 5px;
             font-size: 0.9rem;
         }
@@ -320,7 +361,7 @@
         
         .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(255, 112, 67, 0.25); /* Ombre de focus orange */
         }
         
         /* Footer */
@@ -336,19 +377,51 @@
         
         .social-link {
             background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin: 0 8px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
         
         .social-link:hover {
             background-color: var(--primary-color);
+            transform: translateY(-3px);
         }
         
         /* Back to Top Button */
         .back-to-top {
             background-color: var(--primary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .back-to-top:hover {
             background-color: var(--secondary-color);
+            transform: translateY(-3px);
         }
         
         /* Responsive Adjustments */
@@ -538,19 +611,19 @@
                 <div class="col-12">
                     <h3 class="text-center mb-4">Qualités personnelles</h3>
                     <div class="d-flex flex-wrap justify-content-center">
-                        <div class="quality-card text-center m-3 p-4 shadow-sm rounded">
+                        <div class="quality-card text-center m-3 p-4">
                             <i class="fas fa-search fa-2x mb-3"></i>
                             <h5>Curiosité</h5>
                         </div>
-                        <div class="quality-card text-center m-3 p-4 shadow-sm rounded">
+                        <div class="quality-card text-center m-3 p-4">
                             <i class="fas fa-tasks fa-2x mb-3"></i>
                             <h5>Rigueur</h5>
                         </div>
-                        <div class="quality-card text-center m-3 p-4 shadow-sm rounded">
+                        <div class="quality-card text-center m-3 p-4">
                             <i class="fas fa-drafting-compass fa-2x mb-3"></i>
                             <h5>Précision</h5>
                         </div>
-                        <div class="quality-card text-center m-3 p-4 shadow-sm rounded">
+                        <div class="quality-card text-center m-3 p-4">
                             <i class="fas fa-lightbulb fa-2x mb-3"></i>
                             <h5>Autonomie</h5>
                         </div>
@@ -642,7 +715,7 @@
                             </ul>
                         </div>
                         <div class="col-md-6">
-                            <h4 class="text-center text-success mb-3">M. Sotoca</h4>
+                            <h4 class="text-center text-secondary mb-3">M. Sotoca</h4>
                             <ul class="list-group tp-list">
                                 <li class="list-group-item">Contre-Rendu B1 TP1
                                     <a href="#" class="btn btn-primary" id="downloadTP1"><i class="fas fa-download"></i></a>
@@ -681,7 +754,7 @@
                             </ul>
                         </div>
                         <div class="col-md-6">
-                            <h4 class="text-center text-success mb-3">M. Sotoca</h4>
+                            <h4 class="text-center text-secondary mb-3">M. Sotoca</h4>
                             <ul class="list-group tp-list">
                                 <li class="list-group-item">Contre-Rendu B3 TP1
                                     <a href="#" class="btn btn-primary" id="download_stc_B3TP1"><i class="fas fa-download"></i></a>
@@ -698,7 +771,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="atelier" role="tabpanel" aria-labelledby="atelier-tab">
-                    <h4 class="text-center text-info mb-3">Ateliers - Travaux Dirigés (TD) et Pratiques (TP)</h4>
+                    <h4 class="text-center text-accent mb-3">Ateliers - Travaux Dirigés (TD) et Pratiques (TP)</h4>
                     <ul class="list-group tp-list col-md-8 mx-auto">
                         <li class="list-group-item">Atelier 2 TD-1 Partie 1
                             <a href="#" class="btn btn-primary" id="download_atelier2_TD1P1"><i class="fas fa-download"></i></a>
@@ -716,7 +789,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="divers" role="tabpanel" aria-labelledby="divers-tab">
-                    <h4 class="text-center text-secondary mb-3">Documents Divers</h4>
+                    <h4 class="text-center text-dark mb-3">Documents Divers</h4>
                     <ul class="list-group tp-list col-md-8 mx-auto">
                         <li class="list-group-item">Fiche FreeMind (Commandes Invite de Commande)
                             <a href="#" class="btn btn-primary" id="download_special_1"><i class="fas fa-download"></i></a>
@@ -1015,8 +1088,6 @@
             // Initialize tooltips
             $('[data-bs-toggle="tooltip"]').tooltip();
 
-            // Note: base64EncodedPDF is not needed since we are using relative links to file names
-            // The original logic for base64 download of the CV is removed for simplicity and performance.
         });
     </script>
 </body>
