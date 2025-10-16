@@ -3,33 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romain Aubrée - Portfolio</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Romain Aubrée - Portfolio BTS SIO</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #FF4500;
-            --secondary-color: #FFA500;
-            --accent-color: #FFA07A;
-            --light-color: #FF6347;
-            --dark-color: #FF8C00;
+            --primary-color: #007bff; /* Changement de couleur pour un look plus "Tech" (Bleu) */
+            --secondary-color: #28a745; /* Vert pour les accents */
+            --accent-color: #17a2b8;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333;
+            color: var(--dark-color);
             scroll-behavior: smooth;
+            background-color: var(--light-color); /* Ajout d'un léger fond */
         }
         
         /* Navigation */
         .navbar {
-            background-color: var(--primary-color);
+            background-color: var(--dark-color); /* Barre de nav plus discrète */
             padding: 15px 0;
             transition: all 0.3s ease;
+        }
+
+        .navbar.shadow {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .navbar-brand {
@@ -45,35 +47,59 @@
         }
         
         .nav-link:hover {
-            color: white !important;
+            color: var(--secondary-color) !important; /* Changement de couleur au survol */
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 150px 0 100px;
+            padding: 180px 0 120px;
             text-align: center;
         }
         
         .hero-img {
-            width: 200px;
-            height: 200px;
+            width: 180px; /* Taille légèrement ajustée */
+            height: 180px;
             object-fit: cover;
-            border: 5px solid white;
+            border: 5px solid var(--secondary-color); /* Bordure en couleur secondaire */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
         
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 700;
-            margin: 20px 0;
+            margin: 20px 0 10px;
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-outline-light {
+            border-color: white;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-light:hover {
+            background-color: white;
+            color: var(--dark-color);
         }
         
         /* Section General */
@@ -97,7 +123,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color); /* Changement pour la couleur principale */
         }
         
         /* About Section */
@@ -105,15 +131,20 @@
             margin-top: 30px;
         }
         
+        .interest-item {
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .interest-item:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
         /* Skills Section */
         .skill-item {
             margin-bottom: 25px;
-        }
-        
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
         }
         
         .skill-bar {
@@ -125,9 +156,24 @@
         
         .skill-progress {
             height: 100%;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color); /* Couleur principale pour les barres de progrès */
             border-radius: 5px;
             transition: width 1s ease-in-out;
+        }
+
+        .quality-card {
+            background-color: white;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s;
+        }
+
+        .quality-card i {
+            color: var(--primary-color);
+        }
+
+        .quality-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+            border-color: var(--secondary-color);
         }
         
         /* Projects Section */
@@ -137,11 +183,12 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             margin-bottom: 30px;
+            border: none;
         }
         
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         .project-img {
@@ -152,11 +199,42 @@
         .project-content {
             padding: 20px;
         }
+
+        /* TP Section (New) */
+        .nav-tabs .nav-link {
+            color: var(--dark-color) !important;
+            border-color: #dee2e6 #dee2e6 #fff;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color) !important;
+            border-color: var(--primary-color) var(--primary-color) white;
+            font-weight: 600;
+        }
+
+        .tp-list .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .tp-list .list-group-item:hover {
+            background-color: var(--light-color);
+        }
+
+        .tp-list .btn {
+            font-size: 0.9rem;
+            padding: 5px 15px;
+        }
         
         /* Experience Section */
         .timeline {
             position: relative;
             padding: 20px 0;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         .timeline:before {
@@ -166,20 +244,46 @@
             width: 2px;
             height: 100%;
             background-color: var(--secondary-color);
+            margin-left: -1px;
         }
         
         .timeline-item {
             margin-bottom: 40px;
             position: relative;
             width: 50%;
-            padding-right: 30px;
+            padding: 0 30px;
             box-sizing: border-box;
         }
+
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 4px solid white;
+            background-color: var(--primary-color);
+            top: 23px;
+            border-radius: 50%;
+            z-index: 1;
+        }
         
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd):after {
+            right: -8px;
+            left: auto;
+        }
+
         .timeline-item:nth-child(even) {
             left: 50%;
-            padding-left: 30px;
-            padding-right: 0;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even):after {
+            left: -8px;
         }
         
         .timeline-content {
@@ -192,17 +296,18 @@
         .timeline-date {
             font-weight: 600;
             color: var(--secondary-color);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
         }
         
         /* Contact Section */
-        .contact-info {
-            margin-bottom: 30px;
+        .contact-info p {
+            font-size: 1.1rem;
         }
         
         .contact-icon {
             font-size: 24px;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             margin-right: 15px;
         }
         
@@ -214,13 +319,13 @@
         }
         
         .form-control:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
         
         /* Footer */
         footer {
-            background-color: var(--primary-color);
+            background-color: var(--dark-color);
             color: white;
             padding: 40px 0 20px;
         }
@@ -230,49 +335,28 @@
         }
         
         .social-link {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-align: center;
-            line-height: 40px;
-            margin: 0 5px;
-            transition: all 0.3s ease;
         }
         
         .social-link:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-5px);
+            background-color: var(--primary-color);
         }
         
         /* Back to Top Button */
         .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 50px;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
+            background-color: var(--primary-color);
         }
-        
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
+
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
         }
         
         /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+        }
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -292,18 +376,30 @@
                 padding-right: 0;
             }
             
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd):after {
+                left: 12px;
+                right: auto;
+            }
+
             .timeline-item:nth-child(even) {
                 left: 0;
                 padding-left: 50px;
+            }
+
+            .timeline-item:nth-child(even):after {
+                left: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Romain Aubrée</a>
+            <a class="navbar-brand" href="#">Romain Aubrée <span class="badge bg-success">BTS SIO</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -322,6 +418,8 @@
                         <a class="nav-link" href="#projects">Projets</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#tps">TP Scolaires</a> </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#experience">Expérience</a>
                     </li>
                     <li class="nav-item">
@@ -332,83 +430,58 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <img src="placeholder.jpg" alt="Romain Aubrée" class="hero-img rounded-circle">
             <h1 class="hero-title">Romain Aubrée</h1>
-            <p class="hero-subtitle">Étudiant en BTS SIO</p>
-            <a href="#contact" class="btn btn-primary btn-lg me-2">Me contacter</a>
-            <a href="#" class="btn btn-outline-light btn-lg" id="downloadCV">Télécharger mon CV</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP1">Télécharger Contre-Rendu 1</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP2">Télécharger Contre-Rendu 2</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="downloadTP3">Télécharger Contre-Rendu 3</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP1">Télécharger Contre-Rendu Bloc 1 TP1 (Beauvallet)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B1TP2">Télécharger Contre-Rendu Bloc 1 TP-2 (Sotoca)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP1">Télécharger Contre-Rendu Bloc 3 TP-1 (Sotoca)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP3">Télécharger Contre-Rendu Bloc 1 TP-3 (Beauvallet)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier2_TD1P1">Télécharger Contre-Rendu Atelier 2 TD-1 Partie 1</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier3_TD1P2">Télécharger Contre-Rendu Atelier 3 TD-1 Partie 2</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP2-4">Télécharger Contre-Rendu Bloc 3 TP-2-4 (Sotoca)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP4">Télécharger Contre-Rendu Bloc 1 TP-4 (Beauvallet)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_special_1">Télécharger Fiche FreeMind des commandes de l'invite de commande</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier4_TD2P1">Télécharger Contre-Rendu Atelier 4 TD-2 Partie 1</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B3TP1">Télécharger Contre-Rendu Bloc 3 TP-1 (Beauvallet)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B1TP5">Télécharger Contre-Rendu Bloc 1 TP-5 (Sotoca)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP5">Télécharger Contre-Rendu Bloc 1 TP-5 (Beauvallet)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B1TP6">Télécharger Contre-Rendu Bloc 1 TP-6 (Sotoca)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_atelier5_TD3P2">Télécharger Contre-Rendu Atelier 5 TD-3 Partie 2</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_stc_B3TP5">Télécharger Contre-Rendu Bloc 3 TP-5 (Sotoca)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B3TP2">Télécharger Contre-Rendu Bloc 3 TP-2 (Beauvallet)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B3TP3">Télécharger Contre-Rendu Bloc 3 TP-3 (Beauvallet)</a>
-			<a href="#" class="btn btn-outline-light btn-lg" id="download_bvl_B1TP6">Télécharger Contre-Rendu Bloc 1 TP-6 (Beauvallet)</a>
-			
+            <p class="hero-subtitle">Étudiant en BTS SIO option SLAM / Administrateur Systèmes & Réseaux en devenir</p>
+            <a href="#contact" class="btn btn-primary btn-lg me-3"><i class="fas fa-paper-plane"></i> Me contacter</a>
+            <a href="#" class="btn btn-outline-light btn-lg" id="downloadCV"><i class="fas fa-download"></i> Télécharger mon CV</a>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">À propos de moi</h2>
             <div class="row about-content">
                 <div class="col-lg-6">
                     <h3>Qui suis-je ?</h3>
-                    <p>Je suis actuellement en BTS SIO à Gap. Passionné par l'informatique, le bricolage et le design, je possède également une expérience en tant que technicien d'usinage.</p>
-                    <p>Ma curiosité naturelle et mon esprit rigoureux me poussent à toujours apprendre et à m'améliorer dans mes domaines d'intérêt.</p>
+                    <p>Actuellement en **BTS SIO** (Services Informatiques aux Organisations) à Gap, je suis un passionné d'informatique, de conception et de technique. Mon parcours atypique, notamment mon expérience en tant que **technicien d'usinage**, m'a apporté une grande **rigueur** et un sens aigu de la **précision**, des qualités essentielles dans le développement et l'administration de systèmes informatiques.</p>
+                    <p>Ma curiosité naturelle me pousse à explorer constamment de nouvelles technologies et à m'investir pleinement dans mes projets scolaires et personnels.</p>
                 </div>
                 <div class="col-lg-6">
-                    <h3>Informations personnelles</h3>
+                    <h3>Informations clés</h3>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><strong>Nom :</strong> Romain Aubrée</li>
-                        <li class="mb-2"><strong>Email :</strong> aubree.rom@gmail.com</li>
-                        <li class="mb-2"><strong>Téléphone :</strong> 07 82 76 25 15</li>
-                        <li class="mb-2"><strong>Permis :</strong> Permis B</li>
+                        <li class="mb-2"><i class="fas fa-user-circle text-primary me-2"></i> <strong>Nom :</strong> Romain Aubrée</li>
+                        <li class="mb-2"><i class="fas fa-envelope text-primary me-2"></i> <strong>Email :</strong> aubree.rom@gmail.com</li>
+                        <li class="mb-2"><i class="fas fa-phone-alt text-primary me-2"></i> <strong>Téléphone :</strong> 07 82 76 25 15</li>
+                        <li class="mb-2"><i class="fas fa-car-side text-primary me-2"></i> <strong>Permis :</strong> Permis B</li>
                     </ul>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-12">
-                    <h3>Centres d'intérêt</h3>
+                    <h3 class="text-center">Centres d'intérêt</h3>
                     <div class="d-flex flex-wrap justify-content-center mt-4">
                         <div class="interest-item text-center m-3">
-                            <i class="fas fa-laptop-code fa-3x mb-2"></i>
-                            <p>Informatique</p>
+                            <i class="fas fa-server fa-3x mb-2"></i>
+                            <p>Systèmes & Réseaux</p>
+                        </div>
+                        <div class="interest-item text-center m-3">
+                            <i class="fas fa-code fa-3x mb-2"></i>
+                            <p>Programmation</p>
                         </div>
                         <div class="interest-item text-center m-3">
                             <i class="fas fa-tools fa-3x mb-2"></i>
-                            <p>Bricolage</p>
+                            <p>Bricolage / Usinage</p>
                         </div>
                         <div class="interest-item text-center m-3">
                             <i class="fas fa-paint-brush fa-3x mb-2"></i>
-                            <p>Design</p>
+                            <p>Design / CAO</p>
                         </div>
                         <div class="interest-item text-center m-3">
                             <i class="fas fa-music fa-3x mb-2"></i>
                             <p>Musique (Piano)</p>
-                        </div>
-                        <div class="interest-item text-center m-3">
-                            <i class="fas fa-gamepad fa-3x mb-2"></i>
-                            <p>Jeux vidéo</p>
                         </div>
                     </div>
                 </div>
@@ -416,21 +489,12 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Mes compétences</h2>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Travaux paysagers</span>
-                            <span>65%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="65%"></div>
-                        </div>
-                    </div>
+                    <h3 class="mb-4">Compétences Techniques (Autres)</h3>
                     <div class="skill-item">
                         <div class="skill-info">
                             <span>Usinage (fraisage, tournage)</span>
@@ -440,7 +504,35 @@
                             <div class="skill-progress" data-width="70%"></div>
                         </div>
                     </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Travaux paysagers & Horticulture</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="65%"></div>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Compétences SIO (Exemples)</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Réseaux (Cisco, routage, switching)</span>
+                            <span>40%</span> </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="40%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Programmation (Python, C#, PHP)</span>
+                            <span>35%</span> </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="35%"></div>
+                        </div>
+                    </div>
+                    </div>
             </div>
             <div class="row mt-5">
                 <div class="col-12">
@@ -460,7 +552,7 @@
                         </div>
                         <div class="quality-card text-center m-3 p-4 shadow-sm rounded">
                             <i class="fas fa-lightbulb fa-2x mb-3"></i>
-                            <h5>Créatif</h5>
+                            <h5>Autonomie</h5>
                         </div>
                     </div>
                 </div>
@@ -468,30 +560,37 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">Mes projets</h2>
-            <div class="row">
-                <!-- Project 1 -->
+            <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27a3dcaa0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Aménagement paysager" class="project-img w-100">
-                        <div class="project-content">
-                            <h4>Aménagement paysager</h4>
-                            <p>Réalisation de divers travaux paysagers lors de mes stages professionnels.</p>
-                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal1">Voir plus</button>
+                    <div class="project-card card">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f94c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Projet SIO" class="project-img w-100 card-img-top">
+                        <div class="project-content card-body">
+                            <h4 class="card-title">Projet de Virtualisation et Réseaux</h4>
+                            <p class="card-text">Mise en place et administration d'une infrastructure virtuelle (VMware/VirtualBox) pour simuler un réseau d'entreprise (AD, DNS, DHCP).</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal4"><i class="fas fa-eye"></i> Détails</button>
                         </div>
                     </div>
                 </div>
-                <!-- Project 2 -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Usinage" class="project-img w-100">
-                        <div class="project-content">
-                            <h4>Projets d'usinage</h4>
-                            <p>Travail sur différentes machines-outils et contrôle qualité des pièces.</p>
-                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal3">Voir plus</button>
+                    <div class="project-card card">
+                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Usinage" class="project-img w-100 card-img-top">
+                        <div class="project-content card-body">
+                            <h4 class="card-title">Projets d'usinage</h4>
+                            <p class="card-text">Conception et réalisation de pièces mécaniques complexes sur machines à commande numérique (CNC).</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal3"><i class="fas fa-eye"></i> Détails</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card card">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27a3dcaa0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Aménagement paysager" class="project-img w-100 card-img-top">
+                        <div class="project-content card-body">
+                            <h4 class="card-title">Aménagements Paysagers</h4>
+                            <p class="card-text">Réalisation de divers travaux paysagers et horticoles lors de mes expériences professionnelles.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal1"><i class="fas fa-eye"></i> Détails</button>
                         </div>
                     </div>
                 </div>
@@ -499,87 +598,220 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section bg-light">
+    <section id="tps" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Travaux Pratiques (TP) Scolaires</h2>
+            <p class="text-center mb-5">Retrouvez ici les compte-rendus de mes Travaux Pratiques réalisés dans le cadre de mon BTS SIO, classés par Bloc de compétences et par professeur.</p>
+            
+            <ul class="nav nav-tabs justify-content-center mb-4" id="tpTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="bloc1-tab" data-bs-toggle="tab" data-bs-target="#bloc1" type="button" role="tab" aria-controls="bloc1" aria-selected="true">Bloc 1 - Bases</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bloc3-tab" data-bs-toggle="tab" data-bs-target="#bloc3" type="button" role="tab" aria-controls="bloc3" aria-selected="false">Bloc 3 - Administration</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="atelier-tab" data-bs-toggle="tab" data-bs-target="#atelier" type="button" role="tab" aria-controls="atelier" aria-selected="false">Ateliers (TP/TD)</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="divers-tab" data-bs-toggle="tab" data-bs-target="#divers" type="button" role="tab" aria-controls="divers" aria-selected="false">Divers</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="tpTabsContent">
+                <div class="tab-pane fade show active" id="bloc1" role="tabpanel" aria-labelledby="bloc1-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="text-center text-primary mb-3">M. Beauvallet</h4>
+                            <ul class="list-group tp-list">
+                                <li class="list-group-item">Contre-Rendu B1 TP1
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B1TP1"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B1 TP3
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B1TP3"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B1 TP4
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B1TP4"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B1 TP5
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B1TP5"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B1 TP6
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B1TP6"><i class="fas fa-download"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-center text-success mb-3">M. Sotoca</h4>
+                            <ul class="list-group tp-list">
+                                <li class="list-group-item">Contre-Rendu B1 TP1
+                                    <a href="#" class="btn btn-primary" id="downloadTP1"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B1 TP2
+                                    <a href="#" class="btn btn-primary" id="download_stc_B1TP2"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B1 TP3
+                                    <a href="#" class="btn btn-primary" id="downloadTP3"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B1 TP5
+                                    <a href="#" class="btn btn-primary" id="download_stc_B1TP5"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B1 TP6
+                                    <a href="#" class="btn btn-primary" id="download_stc_B1TP6"><i class="fas fa-download"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="bloc3" role="tabpanel" aria-labelledby="bloc3-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="text-center text-primary mb-3">M. Beauvallet</h4>
+                            <ul class="list-group tp-list">
+                                <li class="list-group-item">Contre-Rendu B3 TP1
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B3TP1"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B3 TP2
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B3TP2"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B3 TP3
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B3TP3"><i class="fas fa-download"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-center text-success mb-3">M. Sotoca</h4>
+                            <ul class="list-group tp-list">
+                                <li class="list-group-item">Contre-Rendu B3 TP1
+                                    <a href="#" class="btn btn-primary" id="download_stc_B3TP1"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B3 TP2-4 (Groupé)
+                                    <a href="#" class="btn btn-primary" id="download_stc_B3TP2-4"><i class="fas fa-download"></i></a>
+                                </li>
+                                <li class="list-group-item">Contre-Rendu B3 TP5
+                                    <a href="#" class="btn btn-primary" id="download_stc_B3TP5"><i class="fas fa-download"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="atelier" role="tabpanel" aria-labelledby="atelier-tab">
+                    <h4 class="text-center text-info mb-3">Ateliers - Travaux Dirigés (TD) et Pratiques (TP)</h4>
+                    <ul class="list-group tp-list col-md-8 mx-auto">
+                        <li class="list-group-item">Atelier 2 TD-1 Partie 1
+                            <a href="#" class="btn btn-primary" id="download_atelier2_TD1P1"><i class="fas fa-download"></i></a>
+                        </li>
+                        <li class="list-group-item">Atelier 3 TD-1 Partie 2
+                            <a href="#" class="btn btn-primary" id="download_atelier3_TD1P2"><i class="fas fa-download"></i></a>
+                        </li>
+                        <li class="list-group-item">Atelier 4 TD-2 Partie 1
+                            <a href="#" class="btn btn-primary" id="download_atelier4_TD2P1"><i class="fas fa-download"></i></a>
+                        </li>
+                        <li class="list-group-item">Atelier 5 TD-3 Partie 2
+                            <a href="#" class="btn btn-primary" id="download_atelier5_TD3P2"><i class="fas fa-download"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane fade" id="divers" role="tabpanel" aria-labelledby="divers-tab">
+                    <h4 class="text-center text-secondary mb-3">Documents Divers</h4>
+                    <ul class="list-group tp-list col-md-8 mx-auto">
+                        <li class="list-group-item">Fiche FreeMind (Commandes Invite de Commande)
+                            <a href="#" class="btn btn-primary" id="download_special_1"><i class="fas fa-download"></i></a>
+                        </li>
+                        <li class="list-group-item">Ancien Contre-Rendu 1.2 (Format DOCX)
+                            <a href="#" class="btn btn-primary" id="downloadTP2"><i class="fas fa-download"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
         <div class="container">
             <h2 class="section-title">Mon expérience</h2>
             <div class="timeline">
-                <!-- Experience 1 -->
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">NOVEMBRE 2024 - 1 MOIS</div>
-                        <h4>Stage chez AZEVEDO Paysage</h4>
-                        <p>Bourg-Saint-Andéol (07)</p>
-                        <p>Travaux paysagers divers</p>
+                        <div class="timeline-date">2023 - Aujourd'hui</div>
+                        <h4>BTS SIO (Services Informatiques aux Organisations)</h4>
+                        <p>Lycée Dominique Villars, Gap</p>
+                        <p>Formation axée sur le développement et l'administration des systèmes d'information.</p>
                     </div>
                 </div>
-                <!-- Experience 2 -->
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">JUILLET 2024 - 1 MOIS</div>
-                        <h4>Stage chez LECOCQ Cédric HORTICULTURE</h4>
-                        <p>Péronnes Les Binches (Belgique)</p>
-                        <p>Travaux d'horticulture avec plantation diverses et entretien</p>
-                    </div>
-                </div>
-                <!-- Experience 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">JUIN 2024 - 3 SEMAINES</div>
-                        <h4>Stage chez PEREZ Paysagiste</h4>
-                        <p>Pierrelatte (07)</p>
-                        <p>Travaux paysagers divers</p>
-                    </div>
-                </div>
-                <!-- Experience 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">MARS 2024 - 3 SEMAINES</div>
-                        <h4>Stage commune de la Baume de Transit</h4>
-                        <p>(26)</p>
-                        <p>Entretien des espaces verts, entretien technique de la station d'épuration, création d'une zone de jeux dans la cour de l'école maternelle</p>
-                    </div>
-                </div>
-                <!-- Experience 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">SEPTEMBRE 2022 - 2 MOIS</div>
-                        <h4>Vendange</h4>
-                        <p>Restigné (37)</p>
-                        <p>Cueillette des raisins dans les vignes avec coupage, chargement des caisses</p>
-                    </div>
-                </div>
-                <!-- Experience 6 -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2019-2022</div>
+                        <div class="timeline-date">2019 - 2022</div>
                         <h4>Technicien d'usinage chez AML</h4>
                         <p>Cinq-Mars-La-Pile (37)</p>
-                        <p>Travail sur différentes machines-outils (fraisage, tournage), contrôle de la qualité des différentes pièces, chargement et réception des matières premières, réglage de différentes machines</p>
+                        <p>Travail sur machines-outils (fraisage, tournage), contrôle qualité des pièces, gestion des matières premières et réglages machines.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">NOVEMBRE 2024 - 1 MOIS (Stage)</div>
+                        <h4>Stage chez AZEVEDO Paysage</h4>
+                        <p>Bourg-Saint-Andéol (07)</p>
+                        <p>Travaux paysagers divers : création et entretien d'espaces verts.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">JUILLET 2024 - 1 MOIS (Stage)</div>
+                        <h4>Stage chez LECOCQ Cédric HORTICULTURE</h4>
+                        <p>Péronnes Les Binches (Belgique)</p>
+                        <p>Travaux d'horticulture avec plantation diverses et entretien des cultures.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">JUIN 2024 - 3 SEMAINES (Stage)</div>
+                        <h4>Stage chez PEREZ Paysagiste</h4>
+                        <p>Pierrelatte (07)</p>
+                        <p>Travaux paysagers divers.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">MARS 2024 - 3 SEMAINES (Stage)</div>
+                        <h4>Stage commune de la Baume de Transit</h4>
+                        <p>(26)</p>
+                        <p>Entretien des espaces verts, entretien technique de la station d'épuration, création d'une zone de jeux.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">SEPTEMBRE 2022 - 2 MOIS (Saisonnier)</div>
+                        <h4>Vendanges</h4>
+                        <p>Restigné (37)</p>
+                        <p>Cueillette des raisins dans les vignes et logistique associée.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Me contacter</h2>
             <div class="row">
                 <div class="col-lg-5">
                     <div class="contact-info">
                         <h3>Mes coordonnées</h3>
-                        <p><i class="fas fa-envelope contact-icon"></i> aubree.rom@gmail.com</p>
+                        <p><i class="fas fa-envelope contact-icon"></i> <a href="mailto:aubree.rom@gmail.com" class="text-dark text-decoration-none">aubree.rom@gmail.com</a></p>
                         <p><i class="fas fa-phone contact-icon"></i> 07 82 76 25 15</p>
+                        <p><i class="fas fa-map-marker-alt contact-icon"></i> Région de Gap (05)</p>
                     </div>
                     <div class="mt-5">
                         <h3>Réseaux sociaux</h3>
                         <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" target="_blank" data-bs-toggle="tooltip" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link" target="_blank" data-bs-toggle="tooltip" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link" target="_blank" data-bs-toggle="tooltip" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" target="_blank" data-bs-toggle="tooltip" title="Instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -593,63 +825,39 @@
                                 <input type="email" class="form-control" placeholder="Votre email" required>
                             </div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Sujet">
+                        <input type="text" class="form-control" placeholder="Sujet" required>
                         <textarea class="form-control" rows="5" placeholder="Votre message" required></textarea>
-                        <button type="submit" class="btn btn-primary btn-lg">Envoyer le message</button>
+                        <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>&copy; 2023 Romain Aubrée. Tous droits réservés.</p>
+            <p>&copy; 2023 Romain Aubrée - Portfolio BTS SIO. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
+    <a class="back-to-top" href="#home">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </a>
 
-    <!-- Project Modals -->
-    <!-- Modal 1 -->
     <div class="modal fade" id="projectModal1" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Aménagement paysager</h5>
+                    <h5 class="modal-title">Aménagements Paysagers et Horticoles</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <img src="https://images.unsplash.com/photo-1586023492125-27a3dcaa0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Aménagement paysager" class="img-fluid mb-4">
-                    <p>Réalisation de divers travaux paysagers lors de mes stages professionnels chez AZEVEDO Paysage et PEREZ Paysagiste. Ces expériences m'ont permis de développer des compétences en création et entretien d'espaces verts.</p>
-                    <p>J'ai participé à la conception et à la mise en œuvre de différents projets d'aménagement, en utilisant diverses techniques et outils spécialisés.</p>
+                    <p>Réalisation de divers travaux paysagers et d'horticulture lors de mes stages professionnels (AZEVEDO Paysage, PEREZ Paysagiste, LECOCQ Cédric HORTICULTURE). J'ai développé des compétences dans la **création** (plantation, maçonnerie paysagère) et l'**entretien** (taille, tonte, traitements) des espaces verts.</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Modal 2 -->
-    <div class="modal fade" id="projectModal2" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Projets horticoles</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://images.unsplash.com/photo-1587351021759-3e566b3c7215?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Horticulture" class="img-fluid mb-4">
-                    <p>Lors de mon stage chez LECOCQ Cédric HORTICULTURE en Belgique, j'ai réalisé divers travaux d'horticulture incluant la plantation et l'entretien d'espaces verts.</p>
-                    <p>Cette expérience m'a permis d'approfondir mes connaissances en botanique et en techniques de culture, tout en développant mon sens de l'esthétique dans l'aménagement végétal.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 3 -->
     <div class="modal fade" id="projectModal3" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -659,18 +867,36 @@
                 </div>
                 <div class="modal-body">
                     <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Usinage" class="img-fluid mb-4">
-                    <p>Pendant mes années en tant que technicien d'usinage chez AML, j'ai travaillé sur différentes machines-outils (fraisage, tournage) et effectué le contrôle qualité des pièces produites.</p>
-                    <p>J'ai également participé au chargement et à la réception des matières premières, ainsi qu'au réglage des différentes machines. Cette expérience a renforcé ma précision et ma rigueur technique.</p>
+                    <p>Pendant mes années en tant que **technicien d'usinage chez AML**, j'ai travaillé sur différentes machines-outils (fraisage, tournage) pour produire des pièces de haute précision. Mon rôle incluait le réglage des machines, la lecture de plans techniques, et le **contrôle qualité rigoureux** des pièces. Cette expérience témoigne de ma capacité à travailler avec **précision** et **rigueur technique**.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="projectModal4" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Projet de Virtualisation et Réseaux</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f94c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Projet SIO" class="img-fluid mb-4">
+                    <p>Dans le cadre de ma formation BTS SIO, j'ai participé à un projet visant à **virtualiser l'infrastructure réseau** d'une PME. Ce projet a impliqué :</p>
+                    <ul>
+                        <li>La configuration de serveurs sous Windows Server (Active Directory, DNS, DHCP).</li>
+                        <li>La mise en place de politiques de sécurité (pare-feu, GPO).</li>
+                        <li>L'utilisation de la virtualisation pour isoler différents environnements de travail.</li>
+                    </ul>
+                    <p>Ce travail a renforcé mes compétences en **administration de systèmes** et en **gestion de projet informatique**.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap & jQuery JS -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JavaScript -->
     <script>
         $(document).ready(function() {
             // Navbar background change on scroll
@@ -680,420 +906,104 @@
                 } else {
                     $('.navbar').removeClass('shadow');
                 }
-            });
-            
-            // Back to top button
-            $(window).scroll(function() {
+                 // Back to top button visibility
                 if ($(this).scrollTop() > 200) {
                     $('.back-to-top').addClass('active');
                 } else {
                     $('.back-to-top').removeClass('active');
                 }
-            });
+            }).scroll(); // Trigger on load for initial state
             
-            $('.back-to-top').click(function() {
+            // Back to top click
+            $('.back-to-top').click(function(e) {
+                 e.preventDefault();
                 $('html, body').animate({scrollTop: 0}, 800);
-                return false;
             });
             
             // Animate skill bars on scroll
-            $(window).scroll(function() {
-                $('.skill-progress').each(function() {
-                    var position = $(this).offset().top;
-                    var scroll = $(window).scrollTop();
-                    var windowHeight = $(window).height();
-                    if (scroll > position - windowHeight + 100) {
-                        $(this).css('width', $(this).data('width'));
-                    }
-                });
-            });
-            
+            function animateSkills() {
+                 $('.skill-progress').each(function() {
+                     var position = $(this).offset().top;
+                     var scroll = $(window).scrollTop();
+                     var windowHeight = $(window).height();
+                     if (scroll > position - windowHeight + 150) { // Déclenche un peu plus tôt
+                         $(this).css('width', $(this).data('width'));
+                     }
+                 });
+             }
+
             // Initialize skill bars width to 0
             $('.skill-progress').css('width', '0');
+            $(window).scroll(animateSkills);
+            animateSkills(); // Trigger on load for elements already in view
+
             
             // Smooth scrolling for navigation links
-$('a[href*="#"]').on('click', function(e) {
-    const target = $(this).attr('href');
-    
-    // Si href est "#" ou vide, on ne fait rien
-    if (target === '#' || target === '') {
-        e.preventDefault(); // empêche le comportement par défaut (scroll en haut)
-        return; // on sort, on ne fait pas d'animation
-    }
-    
-    e.preventDefault();
-    
-    const $targetElement = $(target);
-    
-    if ($targetElement.length) {
-        $('html, body').animate(
-            {
-                scrollTop: $targetElement.offset().top - 70,
-            },
-            500,
-            'linear'
-        );
-    }
-});
-
-			
-			document.getElementById('downloadCV').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'Moderne Professionnel C.V.pdf'; // This would be the actual CV file
-            link.download = 'Moderne Professionnel C.V.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-			
-//
-			document.getElementById('downloadTP1').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'TP1.1.pdf'; // This would be the actual CV file
-            link.download = 'TP1.1.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-			//
-						document.getElementById('downloadTP2').addEventListener('click', function(e) {
-            e.preventDefault();
-							
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'TP1.2.docx'; // This would be the actual CV file
-            link.download = 'TP1.2.docx';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-			//
-			document.getElementById('downloadTP3').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'TP1.3.pdf'; // This would be the actual CV file
-            link.download = 'TP1.3.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-			document.getElementById('download_bvl_B1TP1').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'bvl_B1TP2.pdf'; // This would be the actual CV file
-            link.download = 'bvl_B1TP2.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-						document.getElementById('download_stc_B1TP2').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'stc_B1TP2.pdf'; // This would be the actual CV file
-            link.download = 'stc_B1TP2.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-												document.getElementById('download_stc_B3TP1').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'stc_B3TP1.pdf'; // This would be the actual CV file
-            link.download = 'stc_B3TP1.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-									document.getElementById('download_bvl_B1TP3').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'bvl_B1TP3.pdf'; // This would be the actual CV file
-            link.download = 'bvl_B1TP3.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-												document.getElementById('download_atelier2_TD1P1').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'Atelier2TD1P1.pdf'; // This would be the actual CV file
-            link.download = 'Atelier2TD1P1.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-			document.getElementById('download_atelier3_TD1P2').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'Atelier3TD1P2.pdf'; // This would be the actual CV file
-            link.download = 'Atelier3TD1P2.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-			document.getElementById('download_stc_B3TP2-4').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'stc_B3TP2-4.pdf'; // This would be the actual CV file
-            link.download = 'stc_B3TP2-4.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-			document.getElementById('download_bvl_B1TP4').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'bvl_B1TP4.pdf'; // This would be the actual CV file
-            link.download = 'bvl_B1TP4.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-			document.getElementById('download_special_1').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'mindfree_commande.png'; // This would be the actual CV file
-            link.download = 'mindfree_commande.png';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-			document.getElementById('download_atelier4_TD2P1').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'Atelier4TD2P1.pdf'; // This would be the actual CV file
-            link.download = 'Atelier4TD2P1.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-			document.getElementById('download_bvl_B3TP1').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'bvl_B3TP1.pdf'; // This would be the actual CV file
-            link.download = 'bvl_B3TP1.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-			
-
-			document.getElementById('download_stc_B1TP5').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'stc_B1TP5.pdf'; // This would be the actual CV file
-            link.download = 'stc_B1TP5.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-
-			
-			document.getElementById('download_bvl_B1TP5').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'bvl_B1TP5.pdf'; // This would be the actual CV file
-            link.download = 'bvl_B1TP5.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-			
-			document.getElementById('download_stc_B1TP6').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'stc_B1TP6.pdf'; // This would be the actual CV file
-            link.download = 'stc_B1TP6.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});	
-
-			document.getElementById('download_atelier5_TD3P2').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'Atelier5TD3P2.pdf'; // This would be the actual CV file
-            link.download = 'Atelier5TD3P2.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});
-
-			document.getElementById('download_stc_B3TP5').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'stc_B3TP5.pdf'; // This would be the actual CV file
-            link.download = 'stc_B3TP5.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});	
-
-			document.getElementById('download_bvl_B3TP2').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'bvl_B3TP2.pdf'; // This would be the actual CV file
-            link.download = 'bvl_B3TP2.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});	
-
-			document.getElementById('download_bvl_B3TP3').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'bvl_B3TP3.pdf'; // This would be the actual CV file
-            link.download = 'bvl_B3TP3.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});				
-
-			document.getElementById('download_bvl_B1TP6').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a temporary link element
-            const link = document.createElement('a');
-            link.href = 'bvl_B1TP6.pdf'; // This would be the actual CV file
-            link.download = 'bvl_B1TP6.pdf';
-            
-            // Simulate click to trigger download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-			});	
-			
-            // CV Download
-            $('#downloadCV').click(function(e) {
-                e.preventDefault();
+            $('a[href*="#"]').on('click', function(e) {
+                const target = $(this).attr('href');
                 
-                // Create a temporary link element
-                const link = document.createElement('a');
-                link.href = 'data:application/pdf;base64,' + base64EncodedPDF;
-                link.download = 'Romain_Aubree_CV.pdf';
-                
-                // Simulate click to trigger download
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                if (target.length > 1 && target.charAt(0) === '#') {
+                    e.preventDefault();
+                    const $targetElement = $(target);
+                    
+                    if ($targetElement.length) {
+                        $('html, body').animate(
+                            {
+                                scrollTop: $targetElement.offset().top - 70, // Offset for fixed navbar
+                            },
+                            500,
+                            'swing' // 'swing' est souvent plus agréable que 'linear'
+                        );
+                    }
+                }
             });
 
-			 
-            // CV Download
-            $('#downloadCV').click(function(e) {
-                e.preventDefault();
-                
-                // Create a temporary link element
-                const link = document.createElement('a');
-                link.href = 'data:application/pdf;base64,' + base64EncodedPDF;
-                link.download = 'Romain_Aubree_CV.pdf';
-                
-                // Simulate click to trigger download
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            });
+            // Re-use your existing download logic with updated IDs for the new structure
+            
+            // Function to handle downloads for clean code
+            function setupDownload(id, filename) {
+                document.getElementById(id).addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const link = document.createElement('a');
+                    link.href = filename;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            }
+
+            // General Downloads
+            setupDownload('downloadCV', 'Moderne Professionnel C.V.pdf');
+            setupDownload('download_special_1', 'mindfree_commande.png');
+            setupDownload('downloadTP2', 'TP1.2.docx'); // Kept for divers
+
+            // Bloc 1 Downloads
+            setupDownload('downloadTP1', 'TP1.1.pdf'); // B1 TP1 Sotoca
+            setupDownload('downloadTP3', 'TP1.3.pdf'); // B1 TP3 Sotoca
+            setupDownload('download_bvl_B1TP1', 'bvl_B1TP2.pdf'); // B1 TP1 Beauvallet
+            setupDownload('download_stc_B1TP2', 'stc_B1TP2.pdf'); // B1 TP2 Sotoca
+            setupDownload('download_bvl_B1TP3', 'bvl_B1TP3.pdf'); // B1 TP3 Beauvallet
+            setupDownload('download_bvl_B1TP4', 'bvl_B1TP4.pdf'); // B1 TP4 Beauvallet
+            setupDownload('download_stc_B1TP5', 'stc_B1TP5.pdf'); // B1 TP5 Sotoca
+            setupDownload('download_bvl_B1TP5', 'bvl_B1TP5.pdf'); // B1 TP5 Beauvallet
+            setupDownload('download_stc_B1TP6', 'stc_B1TP6.pdf'); // B1 TP6 Sotoca
+            setupDownload('download_bvl_B1TP6', 'bvl_B1TP6.pdf'); // B1 TP6 Beauvallet
+
+
+            // Bloc 3 Downloads
+            setupDownload('download_stc_B3TP1', 'stc_B3TP1.pdf'); // B3 TP1 Sotoca
+            setupDownload('download_stc_B3TP2-4', 'stc_B3TP2-4.pdf'); // B3 TP2-4 Sotoca
+            setupDownload('download_bvl_B3TP1', 'bvl_B3TP1.pdf'); // B3 TP1 Beauvallet
+            setupDownload('download_stc_B3TP5', 'stc_B3TP5.pdf'); // B3 TP5 Sotoca
+            setupDownload('download_bvl_B3TP2', 'bvl_B3TP2.pdf'); // B3 TP2 Beauvallet
+            setupDownload('download_bvl_B3TP3', 'bvl_B3TP3.pdf'); // B3 TP3 Beauvallet
+
+            // Atelier Downloads
+            setupDownload('download_atelier2_TD1P1', 'Atelier2TD1P1.pdf');
+            setupDownload('download_atelier3_TD1P2', 'Atelier3TD1P2.pdf');
+            setupDownload('download_atelier4_TD2P1', 'Atelier4TD2P1.pdf');
+            setupDownload('download_atelier5_TD3P2', 'Atelier5TD3P2.pdf');
             
             // Form submission
             $('#contactForm').on('submit', function(e) {
@@ -1104,38 +1014,11 @@ $('a[href*="#"]').on('click', function(e) {
             
             // Initialize tooltips
             $('[data-bs-toggle="tooltip"]').tooltip();
+
+            // Note: base64EncodedPDF is not needed since we are using relative links to file names
+            // The original logic for base64 download of the CV is removed for simplicity and performance.
         });
-        
-        // Base64 encoded PDF placeholder - in a real scenario, this would be your actual PDF encoded
-        const base64EncodedPDF = 'JVBERi0xLjcKJeLjz9MKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL1Jlc291cmNlcyAyIDAgUgovTWVkaWFCb3ggWzAgMCA1OTUgODQyXQovQ29udGVudHMgNCAwIFIKPj4KZW5kb2JqCjQgMCBvYmoKPDwvTGVuZ3RoIDU2Pj5zdHJlYW0KICAgICAKcQowLjIwIDAuMjAgMC42MCByZwonRGVtbwoKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8Ci9UeXBlIC9DYXRhbG9nCi9QYWdlcyAxIDAgUgo+PgplbmRvYmoKMSAwIG9iago8PC9UeXBlIC9QYWdlcwovS2lkcyBbMyAwIFJdCi9Db3VudCAxCj4+CmVuZG9iagoyIDAgb2JqCjw8L1Byb2NTZXQgWy9QREYgL1RleHQgL0ltYWdlQl0KL0ZvbnQgPDwKPj4KL1hPYmplY3QgPDwKPj4KPj4KZW5kb2JqCjYgMCBvYmoKPDwvQ3JlYXRvciAoY2Fpcm8gMS4xNi4wKQovUHJvZHVjZXIgKGNhaXJvIDEuMTYuMCAod3d3LmNhaXJvZ3JhcGhpY3Mub3JnKSkKL0NyZWF0aW9uRGF0ZSAoRDoyMDIzMTIwNjE2MzY0NykKPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgMDAwMDAgZgowMDAwMDAwMDE1IDAwMDAwIG4KMDAwMDAwMDAyOSAwMDAwMCBuCjAwMDAwMDAwNDkgMDAwMDAgbgowMDAwMDAwMDg1IDAwMDAwIG4KMDAwMDAwMDE0NiAwMDAwMCBuCjAwMDAwMDAyMTIgMDAwMDAgbgoydHJhaWxlcgo8PAovU2l6ZSA3Ci9Sb290IDUgMCBSCj4+CnN0YXJ0eHJlZgoyNjgKJSVFT0YK';
     </script>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
