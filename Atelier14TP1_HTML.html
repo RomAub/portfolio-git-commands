@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Atelier 14</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #2980b9; --bg: #ecf0f1; --card-bg: #fff; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; }
+        h1, h2 { color: var(--primary); }
+        h2 { border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-top: 40px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        
+        .card { 
+            background: var(--card-bg); border-radius: 8px; padding: 20px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; flex-direction: column; 
+        }
+        .card h3 { margin-top: 0; color: var(--accent); font-size: 1.1em; }
+        .desc { font-size: 0.9em; color: #555; margin-bottom: 15px; flex-grow: 1; }
+        
+        /* Zones de démo */
+        .demo-box { 
+            background: #f9f9f9; border: 1px dashed #ccc; padding: 10px; margin-bottom: 15px; 
+            border-radius: 4px; overflow: auto; position: relative; min-height: 50px;
+        }
+
+        button.run-btn { 
+            background: var(--accent); color: white; border: none; padding: 10px; 
+            width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: auto;
+        }
+        button.run-btn:hover { background: #3498db; }
+
+        /* Code source style */
+        details { margin-top: 10px; background: #2d3436; color: #dfe6e9; border-radius: 4px; }
+        summary { padding: 10px; cursor: pointer; font-weight: bold; font-size: 0.85em; user-select: none; }
+        pre { padding: 15px; margin: 0; overflow-x: auto; font-family: Consolas, monospace; font-size: 0.85em; }
+
+        /* --- STYLES SPÉCIFIQUES --- */
+        
+        /* Horloge (Atelier 12) */
+        .hh { color: red; } .mm { color: green; } .ss { color: blue; }
+        
+        /* Notification (Atelier 12) */
+        .notification { position: fixed; z-index: 999; top: 10px; right: 10px; background: #f1c40f; padding: 10px; border-radius: 5px; color: #fff; }
+        
+        /* Football (Atelier 13) */
+        #field { width: 100%; height: 150px; background: #00FF00; position: relative; cursor: pointer; border: 1px solid black; overflow: hidden; }
+        #ball { position: absolute; left: 0; top: 0; width: 40px; height: 40px; transition: all 0.1s; }
+
+        /* Menu (Atelier 13) */
+        .menu-title { font-weight: bold; cursor: pointer; }
+        
+        /* Carrousel (Atelier 13) */
+        .carousel { position: relative; width: 390px; padding: 10px 40px; border: 1px solid #CCC; background: #eee; border-radius: 15px; margin: 0 auto; }
+        .carousel img { width: 130px; height: 130px; display: block; }
+        .carousel .arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; background: #ddd; border-radius: 50%; border: 1px solid gray; cursor: pointer; text-align: center; line-height: 24px; }
+        .carousel .prev { left: 7px; } .carousel .next { right: 7px; }
+        .carousel .gallery { width: 390px; overflow: hidden; }
+        .carousel ul { width: 9999px; margin: 0; padding: 0; list-style: none; transition: margin-left 250ms; font-size: 0; }
+        .carousel li { display: inline-block; }
+
+        /* Liste Selectable (Atelier 13) */
+        .selected { background: #0f0; } /* Vert fluo comme dans le PDF parfois ou bleu standard */
+        .selectable-list li { cursor: pointer; padding: 5px; border-bottom: 1px solid #eee; }
+        
+        /* Tooltip */
+        .tooltip { position: fixed; padding: 10px 20px; border: 1px solid #b3c9ce; background: #fff; color: #333; border-radius: 4px; box-shadow: 3px 3px 3px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Atelier 14 : Récapitulatif des exercices - Aubrée Romain</h1>
+        <p>Compilation des Ateliers 11, 12 et 13</p>
+    </header>
+
+    <section>
+        <h2>📂 Atelier 11 : Fondamentaux</h2>
+        <div class="grid">
+            
+            <article class="card">
+                <h3>1. Hello World</h3>
+                <p class="desc">Affichage successif de deux alertes.</p>
+                <button class="run-btn" onclick="alert('Hello'); alert('World');">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>alert("Hello");
+alert("World");</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>2. Variables</h3>
+                <p class="desc">Déclaration et copie de valeur.</p>
+                <button class="run-btn" onclick="let name='John'; let admin=name; alert(admin);">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let admin;
+let name;
+name = "John";
+admin = name;
+alert(admin);</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>4. Prompt</h3>
+                <p class="desc">Interaction utilisateur.</p>
+                <button class="run-btn" onclick="let u=prompt('Quel est votre nom?',''); alert('Bienvenue '+u+' !');">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let userName = prompt("Quel est votre nom?", "");
+alert(`Bienvenue ${userName} !`);</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>5. Conversion Types</h3>
+                <p class="desc">Addition correcte de nombres saisis.</p>
+                <button class="run-btn" onclick="let a=Number(prompt('Nb 1?',1)); let b=Number(prompt('Nb 2?',2)); alert(a+b);">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let a = Number(prompt("First number?", 1));
+let b = Number(prompt("Second number?", 2));
+alert(a + b);</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>6. Condition (Nom JS)</h3>
+                <p class="desc">Test sur "ECMAScript".</p>
+                <button class="run-btn" onclick="runExo6()">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let javaName = prompt("Quel est le nom \"officiel\" de JavaScript?");
+if (javaName == "ECMAScript") {
+    alert("Bonne réponse !");
+} else {
+    alert("Ne sait pas ? ECMAScript!");
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>7. Signe Nombre</h3>
+                <p class="desc">1, -1 ou 0 selon le signe.</p>
+                <button class="run-btn" onclick="runExo7()">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let number = Number(prompt("Rentrez un nombre:"));
+if (number > 0) {
+    alert("1");
+} else if (number < 0) {
+    alert("-1");
+} else {
+    alert("0");
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>10. Login</h3>
+                <p class="desc">Système d'authentification (Admin / TheMaster).</p>
+                <button class="run-btn" onclick="runExo10()">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let login = prompt("Qui êtes-vous ?");
+if (login == "Admin") {
+    let password = prompt("Entrez le mot de passe:");
+    if (password == "TheMaster") {
+        alert("Welcome!");
+    } else if (password == "" || password == null) {
+        alert("Canceled");
+    } else {
+        alert("Wrong password");
+    }
+} else if (login == "" || login == null) {
+    alert("Canceled");
+} else {
+    alert("I don't know you");
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>12. Nombres Premiers</h3>
+                <p class="desc">Boucles imbriquées avec étiquette.</p>
+                <button class="run-btn" onclick="runExo12()">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let n = Number(prompt("Entrez un nombre entier supérieur ou égal à 2:"));
+let primes = [];
+for (let i = 2; i <= n; i++) {
+    let isPrime = true;
+    for (let j = 2; j <= Math.sqrt(i); j++) {
+        if (i % j == 0) {
+            isPrime = false;
+            break;
+        }
+    }
+    if (isPrime) primes.push(i);
+}
+alert("Premiers: " + primes.join(", "));</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>16. Puissance (Pow)</h3>
+                <p class="desc">Calcul de x puissance n.</p>
+                <button class="run-btn" onclick="runExo16()">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let x = prompt("Entrez \"x\" ");
+let n = prompt("Entrez \"n\" ");
+alert(Math.pow(x, n));</pre></details>
+            </article>
+
+        </div>
+    </section>
+
+    <section>
+        <h2>📂 Atelier 12 : DOM</h2>
+        <div class="grid">
+
+            <article class="card">
+                <h3>19. Diagonale Rouge</h3>
+                <p class="desc">Génération de tableau et coloration.</p>
+                <div class="demo-box" id="box19"></div>
+                <button class="run-btn" onclick="runExo19()">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let table = document.createElement('table');
+table.border = "1";
+document.body.append(table); // (Ajouté au conteneur ici)
+
+let ligne = 0;
+while (ligne < 5) {
+   let tr = table.insertRow();
+   let cellule = 0;
+   while (cellule < 5) {
+       tr.insertCell().innerText = "X";
+       cellule++;
+   }
+   ligne++;
+}
+
+let i = 0;
+while (i < table.rows.length) {
+    table.rows[i].cells[i].style.backgroundColor = 'red';
+    i++;
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>24. Liste Prompt</h3>
+                <p class="desc">Ajout dynamique d'éléments (boucle while true).</p>
+                <div class="demo-box"><ul id="ul24"></ul></div>
+                <button class="run-btn" onclick="runExo24()">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>const ul = document.createElement('ul');
+document.body.appendChild(ul);
+
+while (true) {
+    let data = prompt("Entrez un élément :");
+    if (data === null || data === "") {
+        break;
+    }
+    let li = document.createElement('li');
+    li.textContent = data;
+    ul.appendChild(li);
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>27. Calendrier</h3>
+                <p class="desc">Générateur de table Calendrier.</p>
+                <div class="demo-box" id="cal27"></div>
+                <button class="run-btn" onclick="createCalendar(document.getElementById('cal27'), 2012, 9)">Exécuter (Sept 2012)</button>
+                <details><summary>Voir le code</summary><pre>function createCalendar(elem, year, month) {
+    let mon = month - 1;
+    let d = new Date(year, mon);
+    let table = '&lt;table&gt;&lt;tr&gt;&lt;th&gt;MO&lt;/th&gt;...&lt;/tr&gt;&lt;tr&gt;';
+    
+    for (let i = 0; i < getDay(d); i++) {
+        table += '&lt;td&gt;&lt;/td&gt;';
+    }
+
+    while (d.getMonth() == mon) {
+        table += '&lt;td&gt;' + d.getDate() + '&lt;/td&gt;';
+        if (getDay(d) % 7 == 6) {
+            table += '&lt;/tr&gt;&lt;tr&gt;';
+        }
+        d.setDate(d.getDate() + 1);
+    }
+    // ... fermeture table
+    elem.innerHTML = table;
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>28. Horloge Colorée</h3>
+                <p class="desc">Mise à jour via setInterval.</p>
+                <div class="demo-box clock" id="clock28">
+                    <span class="hh">hh</span>:<span class="mm">mm</span>:<span class="ss">ss</span>
+                </div>
+                <button class="run-btn" onclick="startClock()">Start</button>
+                <button class="run-btn" style="margin-top:5px; background:#e74c3c" onclick="stopClock()">Stop</button>
+                <details><summary>Voir le code</summary><pre>function update() {
+    let clock = document.getElementById('clock');
+    let date = new Date();
+    // ...
+    clock.children[0].innerHTML = hours; // class="hh"
+    clock.children[1].innerHTML = minutes; // class="mm"
+    clock.children[2].innerHTML = seconds; // class="ss"
+}
+// setInterval(update, 1000);</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>30. Tri Tableau</h3>
+                <p class="desc">Tri alphabétique des lignes.</p>
+                <div class="demo-box">
+                    <table id="grid" border="1">
+                        <thead><tr><th>Name</th><th>Age</th></tr></thead>
+                        <tbody><tr><td>John</td><td>10</td></tr><tr><td>Pete</td><td>15</td></tr><tr><td>Ann</td><td>5</td></tr></tbody>
+                    </table>
+                </div>
+                <button class="run-btn" onclick="runExo30()">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>let table = document.getElementById('grid');
+let tbody = table.querySelector('tbody');
+let rowsArray = Array.from(tbody.rows);
+
+rowsArray.sort((rowA, rowB) => {
+    let nameA = rowA.cells[0].textContent;
+    let nameB = rowB.cells[0].textContent;
+    return nameA.localeCompare(nameB);
+});
+
+tbody.append(...rowsArray);</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>31. Notification</h3>
+                <p class="desc">Fonction showNotification().</p>
+                <button class="run-btn" onclick="showNotification({top:10, right:10, html:'Hello!', className:'welcome'})">Exécuter</button>
+                <details><summary>Voir le code</summary><pre>function showNotification({top = 0, right = 0, className, html}) {
+    let div = document.createElement('div');
+    div.className = "notification";
+    if (className) div.classList.add(className);
+    div.style.top = top + 'px';
+    div.style.right = right + 'px';
+    div.innerHTML = html;
+    document.body.append(div);
+    setTimeout(() => div.remove(), 1500);
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>34. Centrage Balle</h3>
+                <p class="desc">Calcul mathématique (clientWidth / offsetWidth).</p>
+                <button class="run-btn" onclick="alert('Voir code pour formule')">Info</button>
+                <details><summary>Voir le code</summary><pre>ball.style.left = Math.round(field.clientWidth / 2 - ball.offsetWidth / 2) + 'px';
+ball.style.top = Math.round(field.clientHeight / 2 - ball.offsetHeight / 2) + 'px';</pre></details>
+            </article>
+
+        </div>
+    </section>
+
+    <section>
+        <h2>📂 Atelier 13 : Événements</h2>
+        <div class="grid">
+
+            <article class="card">
+                <h3>37. Cacher Texte</h3>
+                <p class="desc">Disparition au clic.</p>
+                <div class="demo-box" id="txt37">Ceci est le texte qui va disparaître.</div>
+                <button class="run-btn" onclick="document.getElementById('txt37').style.display='none'">Cacher le texte</button>
+                <details><summary>Voir le code</summary><pre>document.getElementById('text').style.display="none"</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>38. Cacher Soi-même</h3>
+                <p class="desc">Le bouton disparaît (this).</p>
+                <button class="run-btn" onclick="this.style.display='none'">Clique pour me faire disparaître</button>
+                <details><summary>Voir le code</summary><pre>this.style.display="none"</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>40. Football (Clic)</h3>
+                <p class="desc">Déplacement précis au clic.</p>
+                <div class="demo-box" style="padding:0; border:none; overflow:hidden;">
+                    <div id="field">
+                        <img id="ball" src="https://en.js.cx/clipart/ball.svg">
+                    </div>
+                </div>
+                <details><summary>Voir le code</summary><pre>field.onclick = function(event) {
+    let fieldCoords = field.getBoundingClientRect();
+    let ballTop = event.clientY - fieldCoords.top - field.clientTop - (ball.clientHeight / 2);
+    let ballLeft = event.clientX - fieldCoords.left - field.clientLeft - (ball.clientWidth / 2);
+    // (Vérifications bornes < 0 et > width...)
+    ball.style.left = ballLeft + 'px';
+    ball.style.top = ballTop + 'px';
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>41. Menu (Toggle)</h3>
+                <p class="desc">Ouvrir/Fermer liste Sweeties.</p>
+                <div class="demo-box">
+                    <span id="title41" class="menu-title" onclick="toggleMenu()">▶ Sweeties (click me)!</span>
+                    <ul id="list41" style="display:none"><li>Cake</li><li>Donut</li><li>Honey</li></ul>
+                </div>
+                <details><summary>Voir le code</summary><pre>title.onclick = function() {
+    let isOpen = list.style.display != 'none';
+    if (isOpen) {
+        list.style.display = 'none';
+        title.innerHTML = '▶ Sweeties (click me)!';
+    } else {
+        list.style.display = 'block';
+        title.innerHTML = '▼ Sweeties (click me)!';
+    }
+};</pre></details>
+            </article>
+
+            <article class="card" style="grid-column: span 1;">
+                <h3>42. Carrousel</h3>
+                <p class="desc">Défilement d'images (Exo f).</p>
+                <div class="demo-box">
+                    <div id="carousel" class="carousel">
+                        <button class="arrow prev" onclick="moveCarousel(-1)">⇦</button>
+                        <div class="gallery">
+                            <ul id="gallery-ul">
+                                <li><img src="https://en.js.cx/carousel/1.png"></li>
+                                <li><img src="https://en.js.cx/carousel/2.png"></li>
+                                <li><img src="https://en.js.cx/carousel/3.png"></li>
+                                <li><img src="https://en.js.cx/carousel/4.png"></li>
+                                <li><img src="https://en.js.cx/carousel/5.png"></li>
+                                <li><img src="https://en.js.cx/carousel/6.png"></li>
+                            </ul>
+                        </div>
+                        <button class="arrow next" onclick="moveCarousel(1)">⇨</button>
+                    </div>
+                </div>
+                <details><summary>Voir le code</summary><pre>let width = 130;
+let count = 3;
+let list = carousel.querySelector('ul');
+let position = 0;
+
+carousel.querySelector('.prev').onclick = function() {
+    position += width * count;
+    position = Math.min(position, 0);
+    list.style.marginLeft = position + 'px';
+};
+// Logique similaire pour .next</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>43. Liste Select</h3>
+                <p class="desc">Sélection multiple (Ctrl/Cmd).</p>
+                <div class="demo-box">
+                    <ul id="list43" class="selectable-list" onclick="selectItem(event)">
+                        <li>Christopher Robin</li>
+                        <li>Winnie the Pooh</li>
+                        <li>Tigger</li>
+                    </ul>
+                </div>
+                <details><summary>Voir le code</summary><pre>if (event.ctrlKey || event.metaKey) {
+    toggleSelect(event.target);
+} else {
+    singleSelect(event.target);
+}</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>44. Tooltip</h3>
+                <p class="desc">Affichage au survol (data-tooltip).</p>
+                <div class="demo-box" style="text-align:center; padding-top:20px;">
+                    <button data-tooltip="Ceci est l'infobulle">Survolez-moi</button>
+                    <button data-tooltip="Autre info...">Et moi</button>
+                </div>
+                <details><summary>Voir le code</summary><pre>document.onmouseover = function(event) {
+    let target = event.target;
+    let tooltipHtml = target.dataset.tooltip;
+    if (!tooltipHtml) return;
+    // ... creation div tooltip ...
+    document.body.append(tooltipElem);
+    // ... calcul coords ...
+};</pre></details>
+            </article>
+
+            <article class="card">
+                <h3>45. RunOnKeys</h3>
+                <p class="desc">Appuyez sur 'A' et 'Z' (ou 'Q' et 'W') simultanément.</p>
+                <button class="run-btn" onclick="initKeys()">Activer écoute clavier</button>
+                <details><summary>Voir le code</summary><pre>function runOnKeys(func, ...codes) {
+    let pressed = new Set();
+    document.addEventListener('keydown', function(event) {
+        pressed.add(event.code);
+        for (let code of codes) {
+            if (!pressed.has(code)) return;
+        }
+        pressed.clear();
+        func();
+    });
+    document.addEventListener('keyup', function(event) {
+        pressed.delete(event.code);
+    });
+}
+
+runOnKeys(
+    () => alert("Bonjour!"),
+    "KeyQ",
+    "KeyW"
+);</pre></details>
+            </article>
+
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // --- Atelier 11 ---
+    function runExo6() {
+        let javaName = prompt("Quel est le nom \"officiel\" de JavaScript?");
+        if (javaName == "ECMAScript") alert("Bonne réponse !"); else alert("Ne sait pas ? ECMAScript!");
+    }
+    function runExo7() {
+        let number = Number(prompt("Rentrez un nombre:"));
+        if (number > 0) alert("1"); else if (number < 0) alert("-1"); else alert("0");
+    }
+    function runExo10() {
+        let login = prompt("Qui êtes-vous ?");
+        if (login == "Admin") {
+            let password = prompt("Entrez le mot de passe:");
+            if (password == "TheMaster") alert("Welcome!");
+            else if (password == "" || password == null) alert("Canceled");
+            else alert("Wrong password");
+        } else if (login == "" || login == null) alert("Canceled");
+        else alert("I don't know you");
+    }
+    function runExo12() {
+        let n = Number(prompt("Entrez un nombre entier supérieur ou égal à 2:", 10));
+        if(!n || n<2) return;
+        let primes = [];
+        nextPrime: for (let i = 2; i <= n; i++) {
+            for (let j = 2; j <= Math.sqrt(i); j++) {
+                if (i % j == 0) continue nextPrime;
+            }
+            primes.push(i);
+        }
+        alert("Premiers: " + primes.join(", "));
+    }
+    function runExo16() {
+        let x = prompt("Entrez \"x\"", 2);
+        let n = prompt("Entrez \"n\"", 3);
+        alert(Math.pow(x, n));
+    }
+
+    // --- Atelier 12 ---
+    function runExo19() {
+        let box = document.getElementById('box19');
+        box.innerHTML = ''; // Reset
+        let table = document.createElement('table');
+        table.className = 'diag-table';
+        table.border = "1";
+        box.appendChild(table);
+
+        let ligne = 0;
+        while (ligne < 5) {
+            let tr = table.insertRow();
+            let cellule = 0;
+            while (cellule < 5) {
+                tr.insertCell().innerText = (ligne+1)+":"+(cellule+1); // modif pour visibilité
+                cellule++;
+            }
+            ligne++;
+        }
+        let i = 0;
+        while (i < table.rows.length) {
+            table.rows[i].cells[i].style.backgroundColor = 'red';
+            i++;
+        }
+    }
+    function runExo22() {
+        alert("Regardez le code source pour la logique exacte.");
+        let links = document.querySelectorAll('#links22 a');
+        for (let link of links) {
+            let href = link.getAttribute('href');
+            if (href && href.includes('://')) link.style.color = 'orange';
+        }
+    }
+    function runExo24() {
+        let ul = document.getElementById('ul24');
+        ul.innerHTML = "";
+        while (true) {
+            let data = prompt("Entrez un élément :");
+            if (data === null || data === "") break;
+            let li = document.createElement('li');
+            li.textContent = data;
+            ul.appendChild(li);
+        }
+    }
+    function getDay(date) { let day = date.getDay(); if (day == 0) day = 7; return day - 1; }
+    function createCalendar(elem, year, month) {
+        let mon = month - 1;
+        let d = new Date(year, mon);
+        let table = '<table><tr><th>MO</th><th>TU</th><th>WE</th><th>TH</th><th>FR</th><th>SA</th><th>SU</th></tr><tr>';
+        for (let i = 0; i < getDay(d); i++) table += '<td></td>';
+        while (d.getMonth() == mon) {
+            table += '<td>' + d.getDate() + '</td>';
+            if (getDay(d) % 7 == 6) table += '</tr><tr>';
+            d.setDate(d.getDate() + 1);
+        }
+        table += '</tr></table>';
+        elem.innerHTML = table;
+    }
+    
+    let timerId;
+    function startClock() {
+        if(timerId) return;
+        function update() {
+            let d = new Date();
+            let clock = document.getElementById('clock28');
+            let h = d.getHours(); if(h<10) h='0'+h;
+            let m = d.getMinutes(); if(m<10) m='0'+m;
+            let s = d.getSeconds(); if(s<10) s='0'+s;
+            clock.children[0].innerText = h;
+            clock.children[1].innerText = m;
+            clock.children[2].innerText = s;
+        }
+        timerId = setInterval(update, 1000);
+        update();
+    }
+    function stopClock() { clearInterval(timerId); timerId = null; }
+    
+    function runExo30() {
+        let table = document.getElementById('grid');
+        let tbody = table.querySelector('tbody');
+        let rowsArray = Array.from(tbody.rows);
+        rowsArray.sort((rowA, rowB) => {
+            return rowA.cells[0].textContent.localeCompare(rowB.cells[0].textContent);
+        });
+        tbody.append(...rowsArray);
+    }
+    
+    function showNotification({top = 0, right = 0, className, html}) {
+        let div = document.createElement('div');
+        div.className = "notification";
+        if (className) div.classList.add(className);
+        div.style.top = (top+10) + 'px'; 
+        div.style.right = (right+10) + 'px';
+        div.innerHTML = html;
+        document.body.append(div);
+        setTimeout(() => div.remove(), 1500);
+    }
+
+    // --- Atelier 13 ---
+    // Football
+    let field = document.getElementById('field');
+    let ball = document.getElementById('ball');
+    field.onclick = function(event) {
+        let fieldCoords = field.getBoundingClientRect();
+        let ballTop = event.clientY - fieldCoords.top - field.clientTop - (ball.clientHeight / 2);
+        let ballLeft = event.clientX - fieldCoords.left - field.clientLeft - (ball.clientWidth / 2);
+        if(ballTop < 0) ballTop=0; 
+        if(ballLeft < 0) ballLeft=0;
+        if(ballLeft + ball.clientWidth > field.clientWidth) ballLeft = field.clientWidth - ball.clientWidth;
+        if(ballTop + ball.clientHeight > field.clientHeight) ballTop = field.clientHeight - ball.clientHeight;
+        ball.style.left = ballLeft + 'px';
+        ball.style.top = ballTop + 'px';
+    }
+
+    // Menu
+    function toggleMenu() {
+        let list = document.getElementById('list41');
+        let title = document.getElementById('title41');
+        let isOpen = list.style.display != 'none';
+        if (isOpen) {
+            list.style.display = 'none';
+            title.innerHTML = '▶ Sweeties (click me)!';
+        } else {
+            list.style.display = 'block';
+            title.innerHTML = '▼ Sweeties (click me)!';
+        }
+    }
+
+    // Carrousel
+    let carouselPos = 0;
+    let carouselWidth = 130;
+    let carouselCount = 1; // défilement 1 par 1 pour démo plus fluide sur petit espace
+    function moveCarousel(dir) {
+        let list = document.getElementById('gallery-ul');
+        let listElems = list.querySelectorAll('li');
+        if(dir === 1) { // Next
+            carouselPos -= carouselWidth * carouselCount;
+            carouselPos = Math.max(carouselPos, -carouselWidth * (listElems.length - 3)); // 3 images visibles
+        } else { // Prev
+            carouselPos += carouselWidth * carouselCount;
+            carouselPos = Math.min(carouselPos, 0);
+        }
+        list.style.marginLeft = carouselPos + 'px';
+    }
+
+    // Liste Select
+    function selectItem(e) {
+        if (e.target.tagName != "LI") return;
+        if (e.ctrlKey || e.metaKey) {
+            e.target.classList.toggle('selected');
+        } else {
+            let items = document.querySelectorAll('#list43 li');
+            for(let item of items) item.classList.remove('selected');
+            e.target.classList.add('selected');
+        }
+    }
+    document.getElementById('list43').onmousedown = function() { return false; };
+
+    // Tooltip
+    let tooltipElem;
+    document.onmouseover = function(event) {
+        let target = event.target.closest('[data-tooltip]');
+        if (!target) return;
+        tooltipElem = document.createElement('div');
+        tooltipElem.className = 'tooltip';
+        tooltipElem.innerHTML = target.dataset.tooltip;
+        document.body.append(tooltipElem);
+        let coords = target.getBoundingClientRect();
+        let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+        let top = coords.top - tooltipElem.offsetHeight - 5;
+        if (left < 0) left = 0;
+        if (top < 0) top = coords.top + target.offsetHeight + 5;
+        tooltipElem.style.left = left + 'px';
+        tooltipElem.style.top = top + 'px';
+    };
+    document.onmouseout = function() {
+        if (tooltipElem) { tooltipElem.remove(); tooltipElem = null; }
+    };
+
+// Keys (Exo 45 - PDF p.13)
+    let keysInitialized = false;
+    function initKeys() {
+        if(keysInitialized) { alert("L'écoute est déjà active. Appuyez sur A et Z !"); return; }
+        
+        alert("Focus activé ! Maintenant, appuyez simultanément sur :\n- 'A' et 'Z' (si clavier AZERTY)\n- 'Q' et 'W' (si clavier QWERTY)");
+        
+        function runOnKeys(func, ...codes) {
+            let pressed = new Set();
+            document.addEventListener('keydown', function(event) {
+                pressed.add(event.code);
+                for (let code of codes) {
+                    if (!pressed.has(code)) return;
+                }
+                pressed.clear();
+                func();
+            });
+            document.addEventListener('keyup', function(event) {
+                pressed.delete(event.code);
+            });
+        }
+
+        runOnKeys(
+            () => alert("Bonjour!"),
+            "KeyQ", // Correspond à A sur AZERTY
+            "KeyW"  // Correspond à Z sur AZERTY
+        );
+        keysInitialized = true;
+    }
+</script>
+</body>
+</html>
