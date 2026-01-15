@@ -744,6 +744,9 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="bloc1-tab" data-bs-toggle="tab" data-bs-target="#bloc1" type="button" role="tab" aria-controls="bloc1" aria-selected="true">Bloc 1</button>
                 </li>
+				<li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="bloc2-tab" data-bs-toggle="tab" data-bs-target="#bloc2" type="button" role="tab" aria-controls="bloc2" aria-selected="true">Bloc 2</button>
+                </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="bloc3-tab" data-bs-toggle="tab" data-bs-target="#bloc3" type="button" role="tab" aria-controls="bloc3" aria-selected="false">Bloc 3</button>
                 </li>
@@ -831,6 +834,15 @@
                     </div>
                 </div>
 
+				<div class="tab-pane fade" id="bloc2" role="tabpanel" aria-labelledby="bloc2-tab">
+                    <h4 class="text-center text-accent mb-3">Bloc 2</h4>
+                    <ul class="list-group tp-list col-md-8 mx-auto">
+                        <li class="list-group-item">Contre-Rendu B2 TP1
+                            <a href="#" class="btn btn-primary" id="B2"><i class="fas fa-download"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
                 <div class="tab-pane fade" id="bloc3" role="tabpanel" aria-labelledby="bloc3-tab">
                     <div class="row">
                         <div class="col-md-6">
@@ -853,6 +865,9 @@
                                 </li>
 								<li class="list-group-item">Contre-Rendu B3 CH4 TH3 TD1
                                     <a href="#" class="btn btn-primary" id="download_bvl_B3CH4TH3TD1"><i class="fas fa-download"></i></a>
+                                </li>
+								<li class="list-group-item">Contre-Rendu B3 CH4 TH3 TD2
+                                    <a href="#" class="btn btn-primary" id="download_bvl_B3CH4TH3TD2"><i class="fas fa-download"></i></a>
                                 </li>
 							</ul>
                         </div>
@@ -1241,7 +1256,6 @@
 			setupDownload('download_stc_B1TP21', 'stc_B1TP21.pdf'); // B1 TP21 Sotoca
 
 
-
             // Bloc 3 Downloads
             setupDownload('download_stc_B3TP1', 'stc_B3TP1.pdf'); // B3 TP1 Sotoca
             setupDownload('download_stc_B3TP2-4', 'stc_B3TP2-4.pdf'); // B3 TP2-4 Sotoca
@@ -1253,6 +1267,7 @@
             setupDownload('download_bvl_B3TH2TP1', 'bvl_B3TH2TP1.pdf'); // B3 TH2 TP1 Beauvallet
 			setupDownload('download_bvl_B3TH2TP2', 'bvl_B3TH2TP2.pdf'); // B3 TH2 TP2 Beauvallet
 			setupDownload('download_bvl_B3CH4TH3TD1', 'bvl_B3CH4TH3TD1.pdf'); // B3 CH4 TH3 TD1 Beauvallet
+			setupDownload('download_bvl_B3CH4TH3TD2', 'bvl_B3CH4TH3TD2.pdf'); // B3 CH4 TH3 TD2 Beauvallet
 
             // Atelier Downloads
             setupDownload('download_atelier2_TD1P1', 'Atelier2TD1P1.pdf');
@@ -1282,6 +1297,7 @@
     </script>
 </body>
 </html>
+
 
 
 
