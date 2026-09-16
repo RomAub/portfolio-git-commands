@@ -1170,20 +1170,66 @@
         </div>
     </section>
 
-   <section id="veille" class="section">
+       <!-- SECTION VEILLE TECHNOLOGIQUE MODIFIÉE -->
+    <section id="veille" class="section">
         <div class="container">
             <h2 class="section-title">Veille Technologique : Écrans & Résolution</h2>
-            <div class="row justify-content-center mb-5">
+            
+            <div class="row justify-content-center mb-4">
                 <div class="col-md-8 text-center">
                     <p class="lead">
-                        Cette veille se concentre sur les innovations de rupture en colorimétrie et résolution présentées entre décembre 2025 et janvier 2026 (CES 2026).
+                        Cette veille se concentre sur les innovations de rupture en colorimétrie et résolution, de l'abandon progressif des filtres couleurs à l'avènement des matrices PHOLED et Micro RGB.
                     </p>
+                </div>
+            </div>
+
+            <!-- BLOC: METHODOLOGIE ET OUTILS -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="card shadow-sm border-0" style="border-radius: 12px; overflow: hidden;">
+                        <div class="card-header p-3" style="background-color: var(--dark-color); color: white;">
+                            <h4 class="mb-0 fs-5"><i class="fas fa-cogs text-accent me-2"></i> Méthodologie & Outils de Veille</h4>
+                        </div>
+                        <div class="card-body bg-white p-4">
+                            <div class="row">
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <h5 class="text-primary fs-6"><i class="fas fa-rss-square me-2"></i> Feedly (Agrégateur)</h5>
+                                    <p class="small text-muted mb-0">Suivi quotidien automatisé des flux RSS spécialisés (TechRadar, Les Numériques, Display Daily, Clubic). Classement des sources par dossiers thématiques : "Hardware" et "CES/IFA".</p>
+                                </div>
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <h5 class="text-primary fs-6"><i class="fas fa-bell me-2"></i> Google Alerts</h5>
+                                    <p class="small text-muted mb-0">Configuration d'alertes mail basées sur des opérateurs booléens précis : <code>"Micro LED" OR "OLED" AND "nits" AND "innovation"</code> pour capter immédiatement les fuites presse.</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="text-primary fs-6"><i class="fas fa-robot me-2"></i> IA (Deep Research)</h5>
+                                    <p class="small text-muted mb-0">Utilisation de la fonction <strong>Gemini Deep Research</strong> pour l'exploration en profondeur et la traduction de documentations techniques complexes ou de brevets. Idéal pour obtenir une synthèse précise sur des innovations de rupture.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="accordion veille-list col-lg-10 mx-auto" id="accordionVeille">
 
+				<!-- ARTICLE : SEPTEMBRE 2026 -->
 				<div class="accordion-item">
+					<h2 class="accordion-header" id="headingSept26">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSept26" aria-expanded="true" aria-controls="collapseSept26">
+							<strong>Septembre 2026</strong> &nbsp;-&nbsp; Alienware AW3926QW : L'OLED 5K sublimé par le RGB Stripe Tandem
+						</button>
+					</h2>
+					<div id="collapseSept26" class="accordion-collapse collapse show" aria-labelledby="headingSept26" data-bs-parent="#accordionVeille">
+						<div class="accordion-body">
+							<p>Officialisation de l'Alienware AW3926QW, un moniteur 39 pouces marquant une rupture technologique. Pour pallier les faiblesses traditionnelles de l'OLED (marquage et luminosité limitée), Dell déploie la dalle "Tandem OLED", superposant plusieurs couches émissives pour booster la luminosité (1 300 nits) et la durée de vie. De plus, l'intégration de la structure "RGB Stripe" élimine le sous-pixel blanc, assurant une netteté de texte parfaite, sans les franges colorées habituelles. Une dalle 5K (5120x2160) à 165Hz conçue pour conjuguer productivité professionnelle et gaming extrême.</p>
+							<p class="text-muted mb-0"><small>Source : HardwareCooking / IGN</small></p>
+							<p class="text-muted mb-0"><small>Outil utilisé : Extraction URL / Gemini Deep Research</small></p>
+							<a href="https://www.hardwarecooking.fr/alienware-aw3926qw-oled-5k-rgb-stripe/" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
+						</div>
+					</div>
+				</div>
+
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                             <strong>Janvier 2026</strong> &nbsp;-&nbsp; TCL X11L : L'innovation SQD-Mini LED (10 000 nits & 100% BT.2020)
@@ -1191,7 +1237,7 @@
                     </h2>
                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionVeille">
                         <div class="accordion-body">
-                            <p>Présentation au CES 2026 du modèle phare X11L par TCL et sa filiale CSOT. Refusant la complexité de l'émission RGB directe, TCL choisit d'optimiser l'architecture LCD en associant un rétroéclairage bleu à des boîtes quantiques ultra-fines de seulement 5 nanomètres. Cette synergie chimique et optique permet d'éliminer la diaphonie chromatique, d'atteindre des pics de 10 000 nits grâce à 20 736 zones de gradation locale, et de couvrir 100 % de l'espace colorimétrique BT.2020, consolidant le statut du Mini-LED comme technologie hyper-premium.</p>
+                            <p>Présentation au CES 2026 du modèle phare X11L par TCL et sa filiale CSOT. Refusant la complexité de l'émission RGB directe, TCL choisit d'optimiser l'architecture LCD en associant un rétroéclairage bleu à des boîtes quantiques ultra-fines de seulement 5 nanomètres. Cette synergie chimique et optique permet d'éliminer la diaphonie chromatique, d'atteindre des pics de 10 000 nits grâce à 20 736 zones de gradation locale, et de couvrir 100 % de l'espace colorimétrique BT.2020.</p>
                             <p class="text-muted mb-0"><small>Source : TCL / HomeCineSolutions / Clubic</small></p>
                             <a href="https://www.homecinesolutions.fr/blog/posts/2061-ces-2026-tcl-devoile-le-x11l-un-televiseur-mini-led-plus-lumineux-et-plus-precis" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
                         </div>
@@ -1206,7 +1252,7 @@
                     </h2>
                     <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionVeille">
                         <div class="accordion-body">
-                            <p>LG bouleverse le marché LCD avec sa gamme Micro RGB evo (modèle MRGB95), lauréate d'un CES 2026 Innovation Award. Le rétroéclairage monolithique blanc est abandonné au profit de puces Micro LED rouges, vertes et bleues individuelles. Grâce au contrôle chirurgical assuré par le réseau neuronal du processeur Alpha 11 AI Gen 3, le système compense la diaphonie optique. Le téléviseur obtient la certification "Triple 100%" d'Intertek, validant une couverture totale des espaces BT.2020, DCI-P3 et Adobe RGB.</p>
+                            <p>LG bouleverse le marché LCD avec sa gamme Micro RGB evo (modèle MRGB95), lauréate d'un CES 2026 Innovation Award. Le rétroéclairage monolithique blanc est abandonné au profit de puces Micro LED rouges, vertes et bleues individuelles. Grâce au contrôle chirurgical assuré par le réseau neuronal du processeur Alpha 11 AI Gen 3, le système compense la diaphonie optique.</p>
                             <p class="text-muted mb-0"><small>Source : LG Electronics / Mac4Ever</small></p>
                             <a href="https://www.lgcorp.com/media/release/30227" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
                         </div>
@@ -1221,9 +1267,9 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionVeille">
                         <div class="accordion-body">
-                            <p>Présentation au CES 2026 du modèle phare 116UXS intégrant l'architecture "RGB Mini-LED evo". Ce système ajoute une quatrième LED couleur (Cyan) aux côtés des traditionnelles RGB dans le rétroéclairage. Cette innovation permet d'atteindre une couverture record de 110 % de l'espace colorimétrique BT.2020, surpassant les limites physiques des systèmes trichromatiques standards.</p>
+                            <p>Présentation au CES 2026 du modèle phare 116UXS intégrant l'architecture "RGB Mini-LED evo". Ce système ajoute une quatrième LED couleur (Cyan) aux côtés des traditionnelles RGB dans le rétroéclairage. Cette innovation permet d'atteindre une couverture record de 110 % de l'espace colorimétrique BT.2020.</p>
                             <p class="text-muted mb-0"><small>Source : Hisense / CE Pro / TechRadar</small></p>
-                            <p class="text-muted mb-0"><small>Outil utilisé : Assistant IA & Analyse Web [1, 2]</small></p>
+                            <p class="text-muted mb-0"><small>Outil utilisé : Gemini Deep Research</small></p>
                             <a href="https://www.cepro.com/news/hisense-expands-color-technology-across-tvs-microled-and-laser-projection-at-ces-2026/624447/" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
                         </div>
                     </div>
@@ -1237,9 +1283,9 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionVeille">
                         <div class="accordion-body">
-                            <p>Sony officialise sa technologie "True RGB" (probable série Bravia 10). Contrairement aux QLED utilisant un rétroéclairage bleu converti, cette technologie emploie des LEDs Rouges, Vertes et Bleues discrètes contrôlées directement par le processeur XR et la puce MediaTek MT9131. Résultat : un volume colorimétrique quatre fois supérieur aux meilleurs OLED (A95L) et une luminance extrême sans dilution des couleurs.</p>
+                            <p>Sony officialise sa technologie "True RGB" (probable série Bravia 10). Contrairement aux QLED utilisant un rétroéclairage bleu converti, cette technologie emploie des LEDs Rouges, Vertes et Bleues discrètes contrôlées directement par le processeur XR. Résultat : un volume colorimétrique quatre fois supérieur aux meilleurs OLED.</p>
                             <p class="text-muted mb-0"><small>Source : Sony / Tom's Guide</small></p>
-                            <p class="text-muted mb-0"><small>Outil utilisé : Assistant IA & Analyse Web [3]</small></p>
+                            <p class="text-muted mb-0"><small>Outil utilisé : Gemini Deep Research</small></p>
                             <a href="https://www.tomsguide.com/tvs/the-sony-bravia-10-is-the-tv-im-most-excited-to-see-in-2026-and-it-could-make-oleds-look-obsolete)" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
                         </div>
                     </div>
@@ -1253,31 +1299,31 @@
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionVeille">
                         <div class="accordion-body">
-                            <p>Annonce de la gamme R95H utilisant la technologie "Micro RGB". Les diodes sont inférieures à 100µm et émettent la lumière indépendamment, éliminant le besoin de filtres couleur traditionnels. Certifié par VDE pour atteindre 100 % du gamut BT.2020, ce système intègre le "Micro RGB AI Engine Pro" pour synchroniser la chrominance du rétroéclairage avec l'image affichée.</p>
+                            <p>Annonce de la gamme R95H utilisant la technologie "Micro RGB". Les diodes sont inférieures à 100µm et émettent la lumière indépendamment, éliminant le besoin de filtres couleur traditionnels. Certifié par VDE pour atteindre 100 % du gamut BT.2020.</p>
                             <p class="text-muted mb-0"><small>Source : Samsung Newsroom / ZDNet</small></p>
-                            <p class="text-muted mb-0"><small>Outil utilisé : Assistant IA & Analyse Web [4, 5]</small></p>
+                            <p class="text-muted mb-0"><small>Outil utilisé : Gemini Deep Research</small></p>
                             <a href="https://news.samsung.com/au/samsung-expands-premium-micro-rgb-tv-lineup-for-2026-with-new-sizes-and-advanced-features" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
                         </div>
                     </div>
                 </div>
-                
 
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                             <strong>Septembre 2025</strong> &nbsp;-&nbsp; L'architecture RGB Mini-LED : vers la colorimétrie absolue
                         </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionVeille">
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionVeille">
                         <div class="accordion-body">
                             <p>Dévoilement du Hisense 116UX, premier écran remplaçant le filtre phosphore par un rétroéclairage actif composé de LED rouges, vertes et bleues indépendantes (TriChroma). Atteinte historique de 100 % de l'espace colorimétrique BT.2020 couplée à une luminosité de 8 000 nits.</p>
                             <p class="text-muted mb-0"><small>Source : Hisense / TechRadar</small></p>
-							<p class="text-muted mb-0"><small>Outil utilisé : Gemini DeepSearch et Raisonnement</small></p>
+                            <p class="text-muted mb-0"><small>Outil utilisé : Feedly & Gemini Deep Research</small></p>
                             <a href="https://www.hisense-usa.com/post/once-again-number-one-in-large-screen-tvs-hisense-to-highlight-latest-rgb-miniled-innovation-at-ifa" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
                         </div>
                     </div>
                 </div>
-                </div>
+
+            </div>
         </div>
     </section>
     <section id="experience" class="section bg-light">
