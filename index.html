@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romain Aubrée - Portfolio BTS SIO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF7043; /* Orange Solaire (plus lumineux) */
+            --secondary-color: #BF360C; /* Rouge Corail / Terre (plus foncé, riche) */
+            --accent-color: #FFC107; /* Jaune Doré */
+            --light-color: #FDF7F5; /* Blanc cassé doux */
+            --dark-color: #263238; /* Gris anthracitde/bleu nuit pour le texte et fond */
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            scroll-behavior: smooth;
+            background-color: var(--light-color); 
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: var(--dark-color); 
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.shadow {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important; /* Jaune doré au survol */
+        }
+
+        /* --- Mise en évidence de l'élément TP Scolaires (TRÈS VISIBLE) --- */
+        .nav-item-highlight .nav-link {
+            color: var(--dark-color) !important; /* Couleur du texte sombre */
+            background-color: var(--accent-color); /* Fond Jaune Doré très visible */
+            border-radius: 50px; /* Forme de pilule */
+            padding: 8px 15px !important;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite; /* Ajout d'une légère animation d'appel à l'action */
+        }
+
+        .nav-item-highlight .nav-link:hover {
+            color: white !important; /* Texte blanc au survol */
+            background-color: var(--secondary-color); /* Change au survol pour le Rouge Corail */
+            transform: scale(1.05);
+        }
+
+        /* Annule la marge standard pour un affichage en pilule réussi */
+        .navbar .navbar-nav .nav-item-highlight .nav-link { 
+            margin: 0 5px !important; 
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(255, 193, 7, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+            }
+        }
+        .nav-item-highlight.no-pulse .nav-link {
+            animation: none;
+        }
+
+        /* Lien du menu correspondant à la section affichée */
+        .navbar .nav-link.active {
+            color: var(--accent-color) !important;
+        }
+
+        .navbar .nav-item-highlight .nav-link.active {
+            color: var(--dark-color) !important;
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
+
+        /* Menu sur une seule ligne (pas de "À / propos" sur deux lignes) */
+        .navbar .navbar-nav .nav-link {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1399.98px) {
+            .navbar .navbar-nav .nav-link {
+                margin: 0 2px;
+            }
+        }
+        /* Fin de Mise en évidence */
+        
+        /* Hero Section */
+        .hero {
+			background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('banner.png');
+            /* Ancienne image (coucher de soleil) : background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1507525428034-b723cf961cfe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MXxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 0 120px;
+            text-align: center;
+        }
+        
+        .hero-img {
+            width: 180px; 
+            height: 180px;
+            object-fit: cover;
+            border: 5px solid var(--primary-color); /* Bordure orange */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin: 20px 0 10px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            color: var(--accent-color); /* Jaune doré pour le sous-titre */
+        }
+        
+        .btn-primary {
+            --bs-btn-active-bg: var(--secondary-color);
+            --bs-btn-active-border-color: var(--secondary-color);
+            --bs-btn-focus-shadow-rgb: 255, 112, 67;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Boutons contour (Détails, Lire l'article...) aux couleurs du site */
+        .btn-outline-primary {
+            --bs-btn-color: var(--primary-color);
+            --bs-btn-border-color: var(--primary-color);
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: var(--primary-color);
+            --bs-btn-hover-border-color: var(--primary-color);
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: var(--secondary-color);
+            --bs-btn-active-border-color: var(--secondary-color);
+            --bs-btn-focus-shadow-rgb: 255, 112, 67;
+        }
+
+        .btn-outline-light {
+            border-color: white;
+            color: white;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline-light:hover {
+            background-color: white;
+            color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        .badge.bg-success { /* Pour le badge BTS SIO */
+            background-color: var(--accent-color) !important;
+            color: var(--dark-color) !important;
+        }
+        
+        /* Section General */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--dark-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color); 
+        }
+        
+        /* About Section */
+        .about-content {
+            margin-top: 30px;
+        }
+        
+        .interest-item {
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .interest-item:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Skills Section */
+        .skill-item {
+            margin-bottom: 25px;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary-color); 
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+
+        .quality-card {
+            background-color: white;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 10px;
+        }
+
+        .quality-card i {
+            color: var(--primary-color);
+        }
+
+        .quality-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Projects Section */
+        .project-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            border: none;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px); /* Plus d'effet de "lift" */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Ombre encore plus prononcée */
+        }
+        
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+
+        /* TP Section & Veille Section */
+        .nav-tabs .nav-link {
+            color: var(--dark-color) !important;
+            border-color: #dee2e6 #dee2e6 #fff;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color) !important;
+            border-color: var(--primary-color) var(--primary-color) white;
+            font-weight: 600;
+        }
+
+        .nav-tabs .nav-link:hover {
+            border-color: var(--primary-color) var(--primary-color) #fff;
+        }
+
+        /* Sous-onglets Semestre (TP) */
+        .semester-tabs .nav-link {
+            color: var(--dark-color) !important;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            padding: 6px 20px;
+            margin: 0 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .semester-tabs .nav-link.active {
+            color: white !important;
+            background-color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .semester-tabs .nav-link:hover {
+            color: white !important;
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .tp-list .list-group-item, .veille-list .accordion-item {
+            border-left: 5px solid transparent; /* Bordure d'accent */
+        }
+
+        .tp-list .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .tp-list .list-group-item:hover {
+            background-color: var(--light-color);
+            border-left-color: var(--primary-color); /* Couleur d'accent au survol */
+        }
+
+        /* Lignes TP : titre + boutons (compte rendu / fichiers) */
+        .tp-list .list-group-item {
+            gap: 12px;
+        }
+
+        .tp-title {
+            flex: 1 1 220px;
+        }
+
+        .tp-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .tp-list .btn {
+            white-space: nowrap;
+        }
+
+        .tp-context {
+            display: block;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        /* Recherche TP */
+        .tp-search {
+            max-width: 520px;
+            margin: 0 auto 30px;
+        }
+
+        .tp-search .form-control {
+            margin-bottom: 0;
+            padding: 12px 15px;
+        }
+
+        .tp-search .input-group-text {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Style Spécifique Veille Technologique */
+        .accordion-button:not(.collapsed) {
+            color: var(--dark-color);
+            background-color: rgba(255, 193, 7, 0.2); /* Fond léger jaune quand ouvert */
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+        }
+        .accordion-button:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+        }
+        .accordion-item {
+            border: none;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 8px !important;
+            overflow: hidden;
+        }
+        .accordion-item:hover {
+             border-left: 5px solid var(--accent-color);
+        }
+
+        .tp-list .btn {
+            font-size: 0.9rem;
+            padding: 5px 15px;
+        }
+
+        .text-primary { /* Pour les titres de profs dans les TP */
+            color: var(--primary-color) !important;
+        }
+        .text-secondary { /* Pour les titres de profs dans les TP */
+            color: var(--secondary-color) !important;
+        }
+        .text-accent { /* Pour les titres d's */
+            color: var(--accent-color) !important;
+        }
+        #tps .text-accent { /* Jaune trop clair sur fond clair : version ambre foncé */
+            color: #B06A00 !important;
+        }
+        .text-dark { /* Pour les titres divers */
+            color: var(--dark-color) !important;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary-color); /* Couleur secondaire pour la ligne */
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            width: 50%;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 4px solid var(--light-color); /* Bordure light pour contraste */
+            background-color: var(--primary-color); /* Point principal */
+            top: 23px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+		.text-pcc {
+			color: #00BCD4 !important;
+		}
+
+		.text-stage {
+			color: #00C72E !important;
+		}
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd):after {
+            right: -8px;
+            left: auto;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even):after {
+            left: -8px;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent-color); /* Date en jaune doré */
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-info p {
+            font-size: 1.1rem;
+        }
+        
+        .contact-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-right: 15px;
+        }
+        
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(255, 112, 67, 0.25); /* Ombre de focus orange */
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-link {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin: 0 8px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            background-color: var(--primary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+        }
+        @media (max-width: 768px) {
+            /* Onglets TP : défilement horizontal sur une seule ligne */
+            #tpTabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                justify-content: flex-start !important;
+                scrollbar-width: thin;
+            }
+
+            #tpTabs .nav-link {
+                white-space: nowrap;
+                margin: 0 4px;
+            }
+
+            .tp-list .list-group-item {
+                flex-wrap: wrap;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .timeline:before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd):after {
+                left: 12px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+                padding-left: 50px;
+            }
+
+            .timeline-item:nth-child(even):after {
+                left: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-xl navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Romain Aubrée <span class="badge bg-success">BTS SIO</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projets</a>
+                    </li>
+                    <li class="nav-item nav-item-highlight">
+                        <a class="nav-link" href="#tps">TP Scolaires</a> 
+                    </li>
+                    <li class="nav-item nav-item-highlight no-pulse">
+                        <a class="nav-link" href="#veille">Veille Techno</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Expérience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="placeholder.jpg" alt="Romain Aubrée" class="hero-img rounded-circle">
+            <h1 class="hero-title">Romain Aubrée</h1>
+            <p class="hero-subtitle">Étudiant en BTS SIO option SLAM</p>
+            <a href="#contact" class="btn btn-primary btn-lg me-3"><i class="fas fa-paper-plane"></i> Me contacter</a>
+            <a href="#" class="btn btn-outline-light btn-lg" id="downloadCV"><i class="fas fa-download"></i> Télécharger mon CV</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="row about-content">
+                <div class="col-lg-6">
+                    <h3>Qui suis-je ?</h3>
+                    <p>Actuellement en <strong>BTS SIO</strong> (Services Informatiques aux Organisations) à Gap, je suis un passionné d'informatique, de conception et de technique. Mon parcours atypique, notamment mon expérience en tant que <strong>technicien d'usinage</strong>, m'a apporté une grande <strong>rigueur</strong> et un sens aigu de la <strong>précision</strong>, des qualités essentielles dans le développement et l'administration de systèmes informatiques.</p>
+                    <p>Ma curiosité naturelle me pousse à explorer constamment de nouvelles technologies et à m'investir pleinement dans mes projets scolaires et personnels.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h3>Informations clés</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-user-circle text-primary me-2"></i> <strong>Nom :</strong> Romain Aubrée</li>
+                        <li class="mb-2"><i class="fas fa-envelope text-primary me-2"></i> <strong>Email :</strong> aubree.rom@gmail.com</li>
+                        <li class="mb-2"><i class="fas fa-phone-alt text-primary me-2"></i> <strong>Téléphone :</strong> 07 82 76 25 15</li>
+                        <li class="mb-2"><i class="fas fa-car-side text-primary me-2"></i> <strong>Permis :</strong> Permis B</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="text-center">Centres d'intérêt</h3>
+                    <div class="d-flex flex-wrap justify-content-center mt-4">
+                        <div class="interest-item text-center m-3">
+                            <i class="fas fa-server fa-3x mb-2"></i>
+                            <p>Systèmes & Réseaux</p>
+                        </div>
+                        <div class="interest-item text-center m-3">
+                            <i class="fas fa-code fa-3x mb-2"></i>
+                            <p>Programmation</p>
+                        </div>
+                        <div class="interest-item text-center m-3">
+                            <i class="fas fa-tools fa-3x mb-2"></i>
+                            <p>Bricolage / Usinage</p>
+                        </div>
+                        <div class="interest-item text-center m-3">
+                            <i class="fas fa-paint-brush fa-3x mb-2"></i>
+                            <p>Design / CAO</p>
+                        </div>
+                        <div class="interest-item text-center m-3">
+                            <i class="fas fa-music fa-3x mb-2"></i>
+                            <p>Musique (Piano)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Mes compétences</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Compétences Techniques (Autres)</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Usinage (fraisage, tournage)</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Travaux paysagers & Horticulture</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="65%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Compétences SIO (Exemples)</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Réseaux (Cisco, routage, switching)</span>
+                            <span>40%</span> </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="40%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Programmation (Python, C#, PHP)</span>
+                            <span>35%</span> </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="35%"></div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-4">Qualités personnelles</h3>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <div class="quality-card text-center m-3 p-4">
+                            <i class="fas fa-search fa-2x mb-3"></i>
+                            <h5>Curiosité</h5>
+                        </div>
+                        <div class="quality-card text-center m-3 p-4">
+                            <i class="fas fa-tasks fa-2x mb-3"></i>
+                            <h5>Rigueur</h5>
+                        </div>
+                        <div class="quality-card text-center m-3 p-4">
+                            <i class="fas fa-drafting-compass fa-2x mb-3"></i>
+                            <h5>Précision</h5>
+                        </div>
+                        <div class="quality-card text-center m-3 p-4">
+                            <i class="fas fa-lightbulb fa-2x mb-3"></i>
+                            <h5>Autonomie</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Mes projets</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card card">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f94c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Projet SIO" class="project-img w-100 card-img-top">
+                        <div class="project-content card-body">
+                            <h4 class="card-title">Projet de Virtualisation et Réseaux</h4>
+                            <p class="card-text">Mise en place et administration d'une infrastructure virtuelle (VMware/VirtualBox) pour simuler un réseau d'entreprise (AD, DNS, DHCP).</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal4"><i class="fas fa-eye"></i> Détails</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card card">
+                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Usinage" class="project-img w-100 card-img-top">
+                        <div class="project-content card-body">
+                            <h4 class="card-title">Projets d'usinage</h4>
+                            <p class="card-text">Conception et réalisation de pièces mécaniques complexes sur machines à commande numérique (CNC).</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal3"><i class="fas fa-eye"></i> Détails</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card card">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27a3dcaa0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Aménagement paysager" class="project-img w-100 card-img-top">
+                        <div class="project-content card-body">
+                            <h4 class="card-title">Aménagements Paysagers</h4>
+                            <p class="card-text">Réalisation de divers travaux paysagers et horticoles lors de mes expériences professionnelles.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal1"><i class="fas fa-eye"></i> Détails</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tps" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Travaux Pratiques (TP) Scolaires</h2>
+            <p class="text-center mb-5">Retrouvez ici les compte-rendus de mes Travaux Pratiques réalisés dans le cadre de mon BTS SIO, classés par Bloc de compétences, par semestre et par professeur.</p>
+            
+            <div class="tp-search">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input type="search" class="form-control" id="tpSearch" placeholder="Rechercher un TP (PHP, Cisco...)" aria-label="Rechercher un TP">
+                </div>
+            </div>
+
+            <div id="tpSearchResults" class="d-none">
+                <p class="text-center text-muted mb-3" id="tpSearchCount"></p>
+                <ul class="list-group tp-list col-md-10 mx-auto" id="tpSearchList"></ul>
+            </div>
+
+            <ul class="nav nav-tabs justify-content-center mb-4" id="tpTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="bloc1-tab" data-bs-toggle="tab" data-bs-target="#bloc1" type="button" role="tab" aria-controls="bloc1" aria-selected="true">Bloc 1</button>
+                </li>
+				<li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bloc2-tab" data-bs-toggle="tab" data-bs-target="#bloc2" type="button" role="tab" aria-controls="bloc2" aria-selected="false">Bloc 2</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="bloc3-tab" data-bs-toggle="tab" data-bs-target="#bloc3" type="button" role="tab" aria-controls="bloc3" aria-selected="false">Bloc 3</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="atelier-tab" data-bs-toggle="tab" data-bs-target="#atelier" type="button" role="tab" aria-controls="atelier" aria-selected="false">Ateliers (TP/TD)</button>
+                </li>
+				<li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pcc-tab" data-bs-toggle="tab" data-bs-target="#pcc" type="button" role="tab" aria-controls="pcc" aria-selected="false">PCC</button>
+                </li>
+				<li class="nav-item" role="presentation">
+                    <button class="nav-link" id="stage1-tab" data-bs-toggle="tab" data-bs-target="#stage1" type="button" role="tab" aria-controls="stage1" aria-selected="false">Stage 1</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="divers-tab" data-bs-toggle="tab" data-bs-target="#divers" type="button" role="tab" aria-controls="divers" aria-selected="false">Divers/Autre</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="tpTabsContent">
+                <div class="tab-pane fade show active" id="bloc1" role="tabpanel" aria-labelledby="bloc1-tab">
+                    <ul class="nav nav-pills semester-tabs justify-content-center mb-4" id="bloc1-semestres" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="bloc1-s12-tab" data-bs-toggle="pill" data-bs-target="#bloc1-s12" type="button" role="tab" aria-controls="bloc1-s12" aria-selected="true">Semestre 1/2</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="bloc1-s34-tab" data-bs-toggle="pill" data-bs-target="#bloc1-s34" type="button" role="tab" aria-controls="bloc1-s34" aria-selected="false">Semestre 3/4</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="bloc1-s12" role="tabpanel" aria-labelledby="bloc1-s12-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-center text-primary mb-3">Mme. Beauvallet</h4>
+                                    <ul class="list-group tp-list">
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP1</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP3</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP4</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP4"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP5</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP5"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP6</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP6"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP7</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP7"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP8</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP8"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP9</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP9"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP10</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP10"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP11</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TP11"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TD4 - BDD - LECLERC Partie 1</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TD4"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TD5 - BDD - ZOO</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B1TD5"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TD6 - SQL - LECLERC Partie 2 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B1TD6"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP - Gestion Droit SQL (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B1_GestionDroitSQL"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP - Introduction PHP (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B1_TP_PHP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP - Bases et Programmation (PHP) (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B1_TP_PHP_BASES_PROGRAMMATION"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B1_TP_PHP_BASES_PROGRAMMATION_files" title="Contre-Rendu B1 TP - Bases et Programmation Files (Fichiers PHP) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP - Transmission et Accès BDD (PHP) (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B1_TP_PHP_TRANSMISSION_ACCES_BDD"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B1_TP_PHP_TRANSMISSION_ACCES_BDD_files" title="Contre-Rendu B1 TP - Transmission et Accès BDD Files (Fichiers PHP) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP5 (PHP) (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B1_TP5"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B1_TP5_files" title="Contre-Rendu B1 TP5 (PHP) Files (Fichiers PHP + SQL) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP Films (HTML) (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B1_TP_Films"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B1_TP_Films_files" title="Contre-Rendu B1 TP Films (HTML) Files (Fichiers/Projet HTML + CSS + \lib + Images JPG) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-center text-secondary mb-3">Mr. Sotoca</h4>
+                                    <ul class="list-group tp-list">
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP1</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="downloadTP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP2</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B1TP2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP3</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="downloadTP3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP5</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B1TP5"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP6</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B1TP6"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP7</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B1TP7"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_stc_B1TP7_file" title="Contre-Rendu B1 TP7 (Fichier(s))"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP21</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B1TP21"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP UBUNTU</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B1TP_UBUNTU"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP1 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S2_B1TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP2 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S2_B1_TP2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP3 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S2_B1_TP3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP4 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S2_B1_TP4"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP5 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S2_B1_TP5"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_stc_S2_B1_TP5_files" title="Contre-Rendu B1 TP5 Files (Rapports GPO) (Fichiers .HTM) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="bloc1-s34" role="tabpanel" aria-labelledby="bloc1-s34-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-center text-primary mb-3">Mme. Beauvallet</h4>
+                                    <ul class="list-group tp-list">
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP PGI (Semestre 3)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S3_B1_TP_PGI"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_bvl_S3_B1_TP_PGI_files" title="Contre-Rendu B1 TP PGI Files (Fichier XLS) (Semestre 3)"><i class="fas fa-file-excel"></i> Excel</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TD Restaurant (Semestre 3)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S3_B1_TP_RESTAURANT"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_bvl_S3_B1_TP_RESTAURANT_files" title="Contre-Rendu B1 TD Restaurant Files (Fichier XLSX) (Semestre 3)"><i class="fas fa-file-excel"></i> Excel</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-center text-secondary mb-3">Mr. Sotoca</h4>
+                                    <ul class="list-group tp-list">
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP1 (Semestre 3)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S3_B1_TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP2 (Semestre 3)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S3_B1_TP2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B1 TP3 (Semestre 3)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S3_B1_TP3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="bloc2" role="tabpanel" aria-labelledby="bloc2-tab">
+                    <ul class="nav nav-pills semester-tabs justify-content-center mb-4" id="bloc2-semestres" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="bloc2-s12-tab" data-bs-toggle="pill" data-bs-target="#bloc2-s12" type="button" role="tab" aria-controls="bloc2-s12" aria-selected="true">Semestre 1/2</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="bloc2-s34-tab" data-bs-toggle="pill" data-bs-target="#bloc2-s34" type="button" role="tab" aria-controls="bloc2-s34" aria-selected="false">Semestre 3/4</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="bloc2-s12" role="tabpanel" aria-labelledby="bloc2-s12-tab">
+                            <h4 class="text-center text-accent mb-3">Bloc 2</h4>
+                            <ul class="list-group tp-list col-md-8 mx-auto">
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu  TD2</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_B2TD2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_B2TD2_files" title="Contre-Rendu  TD2 Files (Projet IntelliJ) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD3 (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_B2TD3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_B2TD3_files" title="Contre-Rendu B2 TD3 Files (Projet IntelliJ + Fichier SQL) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD - Introduction UML (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S2_B2TD_Introduction_UML"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B2TD_Introduction_UML_files" title="Contre-Rendu B2 TD - Introduction UML | Files (Fichier Altova UModel + Fichier PowerAMC) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD4 - Diagramme de classe (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S2_B2TD4"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_B2TD4_files" title="Contre-Rendu B2 TD4 - Diagramme de classe | Files (Projet IntelliJ + Fichier PowerAMC + Fichier Java Brut) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD7 - Héritage (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S2_B2TD7"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_B2TD7_files" title="Contre-Rendu B2 TD7 - Héritage | Files (Projet IntelliJ + Fichier PowerAMC) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD - Modélisation Avancée SQL (Dossier SLAM 1.1) (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S2_B2_TD_Modelisation_Avancee"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD - SQL Avancé (Dossier SLAM 1.2) (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S2_B2TD_SQL_Avancee"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B2TD_SQL_Avancee_files" title="Contre-Rendu B2 TD - SQL Avancé (Dossier SLAM 1.2) (TD 9) | Files (Fichier .php) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TP8 (CarDealer) (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S2_B2TP8"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="https://drive.google.com/file/d/1sNV9ZhQz8kEHClIgerQN2tm0hNfjW1FF/view?usp=sharing" class="btn btn-outline-primary" id="download_bvl_S2_B2TP8_files" target="_blank" rel="noopener noreferrer" title="Contre-Rendu B2 TP8 (CarDealer) Files (Lien Google Drive) (Projet IntelliJ + Fichier SQL + Fichier .jar) (Semestre 2)"><i class="fab fa-google-drive"></i> Drive</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD1 - MVC PHP (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S2_B2_MVC_PHP_TD1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B2_MVC_PHP_TD1_files" title="Contre-Rendu B2 TD1 - MVC PHP | Files (Fichiers HTML et PHP) (Semestre 2)"><i class="fas fa-file-zipper"></i> Fichiers</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="bloc2-s34" role="tabpanel" aria-labelledby="bloc2-s34-tab">
+                            <h4 class="text-center text-accent mb-3">Bloc 2</h4>
+                            <ul class="list-group tp-list col-md-8 mx-auto">
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TP - Symfony (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S3_B2_TP_Symfony"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="https://github.com/RomAub/bvl_S3_B2_TP_Symfony" class="btn btn-outline-primary" id="download_bvl_S3_B2_TP_Symfony_files" target="_blank" rel="noopener noreferrer" title="Contre-Rendu B2 TP - Symfony | Files (Projet GitHub + eventify-db.sql) (Semestre 3)"><i class="fab fa-github"></i> GitHub</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD1 - PL/pgSQL (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S3_B2_TD_Initiation_PL_pgSQL"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_S3_B2_TD_Initiation_PL_pgSQL_files" title="Contre-Rendu B2 TD1 - PL/pgSQL | File (Fichier SQL) (Semestre 3)"><i class="fas fa-database"></i> SQL</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD2 - MVC PHP (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S3_B2_TD2_MVC_PHP"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="https://github.com/RomAub/bvl_S3_B2_MVC_PHP_TD2" class="btn btn-outline-primary" id="download_bvl_S3_B2_TD2_MVC_PHP_files" target="_blank" rel="noopener noreferrer" title="Contre-Rendu B2 TD2 - MVC PHP | Files (Projet GitHub + mvc_php_td2.sql) (Semestre 3)"><i class="fab fa-github"></i> GitHub</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TP - Dart Flutter (Exercices + Projet Dark Mode) (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S3_B2_TP_Dart_Flutter"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="https://github.com/RomAub/RomAub-bvl_S3_B2_TP_Dart_Flutter" class="btn btn-outline-primary" id="download_bvl_S3_B2_TP_Dart_Flutter_files" target="_blank" rel="noopener noreferrer" title="Contre-Rendu B2 TP - Dart Flutter (Projet Dark Mode) | Files (Projet GitHub) (Semestre 3)"><i class="fab fa-github"></i> GitHub</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD3 - MVC PHP (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S3_B2_TD3_MVC_PHP"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="https://github.com/RomAub/bvl_S3_B2_MVC_PHP_TD2/tree/TD3" class="btn btn-outline-primary" id="download_bvl_S3_B2_TD3_MVC_PHP_files" target="_blank" rel="noopener noreferrer" title="Contre-Rendu B2 TD3 - MVC PHP | Files (Projet GitHub (Branche du TD2 MVC) + mvc_php_td2.sql) (Semestre 3)"><i class="fab fa-github"></i> GitHub</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TP1 - Interface utilisateur (1-3) (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S3_B2_TP1_Interface_Utilisateur_1_3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="https://github.com/RomAub/bvl_S3_B2_TP1_Interface_Utilisateur_1-3" class="btn btn-outline-primary" id="download_bvl_S3_B2_TP1_Interface_Utilisateur_1_3_files" target="_blank" rel="noopener noreferrer" title="Contre-Rendu B2 TP1 - Interface utilisateur (1-3) | Files (Projet GitHub) (Semestre 3)"><i class="fab fa-github"></i> GitHub</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B2 TD2 - PL/pgSQL (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S3_B2_TD2_Initiation_PL_pgSQL"><i class="fas fa-file-pdf"></i> PDF</a>
+                                        <a href="#" class="btn btn-outline-primary" id="download_bvl_S3_B2_TD2_Initiation_PL_pgSQL_files" title="Contre-Rendu B2 TD2 - PL/pgSQL | File (Fichier SQL) (Semestre 3)"><i class="fas fa-database"></i> SQL</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="bloc3" role="tabpanel" aria-labelledby="bloc3-tab">
+                    <ul class="nav nav-pills semester-tabs justify-content-center mb-4" id="bloc3-semestres" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="bloc3-s12-tab" data-bs-toggle="pill" data-bs-target="#bloc3-s12" type="button" role="tab" aria-controls="bloc3-s12" aria-selected="true">Semestre 1/2</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="bloc3-s34-tab" data-bs-toggle="pill" data-bs-target="#bloc3-s34" type="button" role="tab" aria-controls="bloc3-s34" aria-selected="false">Semestre 3/4</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="bloc3-s12" role="tabpanel" aria-labelledby="bloc3-s12-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="text-center text-primary mb-3">Mme. Beauvallet</h4>
+                                    <ul class="list-group tp-list">
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP1</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B3TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP2</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B3TP2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP3</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B3TP3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TH2 TP1</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B3TH2TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TH2 TP2</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B3TH2TP2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 CH4 TH3 TD1</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B3CH4TH3TD1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 CH4 TH3 TD2</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B3CH4TH3TD2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 CH4 TH3 TD3</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_B3CH4TH3TD3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 CH5 TH3 TD1 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B3CH5TH3TD1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP8 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B3TP8"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B3TP8_files" title="Contre-Rendu B3 TP8 Files (Fichier Cisco Packet Tracer (pkt)) (Semestre 2)"><i class="fas fa-network-wired"></i> Packet Tracer</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP Exercice d'Application Chapitre 5 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B3TP_Exo_Application_Chapitre_5"><i class="fas fa-file-pdf"></i> PDF</a>
+                                                <a href="#" class="btn btn-outline-primary" id="download_bvl_S2_B3TP_Exo_Application_Chapitre_5_files" title="Contre-Rendu B3 TP Exercice d&#x27;Application Chapitre 5 Files (Fichier Cisco Packet Tracer (pkt)) (Semestre 2)"><i class="fas fa-network-wired"></i> Packet Tracer</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TD9 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_bvl_S2_B3TD9"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="text-center text-secondary mb-3">Mr. Sotoca</h4>
+                                    <ul class="list-group tp-list">
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP1</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B3TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP2-4 (Groupé)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B3TP2-4"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP5</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B3TP5"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP6</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_B3TP6"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP13 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S2_B3TP16"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="tp-title">Contre-Rendu B3 TP24 (Semestre 2)</span>
+                                            <span class="tp-actions">
+                                                <a href="#" class="btn btn-primary" id="download_stc_S2_B3TP24"><i class="fas fa-file-pdf"></i> PDF</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="bloc3-s34" role="tabpanel" aria-labelledby="bloc3-s34-tab">
+                            <h4 class="text-center text-accent mb-3">Bloc 3</h4>
+                            <ul class="list-group tp-list col-md-8 mx-auto">
+                                <li class="list-group-item">
+                                    <span class="tp-title">Contre-Rendu B3 TP1 Installation Kali-Linux (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_bvl_S3_B3TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="atelier" role="tabpanel" aria-labelledby="atelier-tab">
+                    <ul class="nav nav-pills semester-tabs justify-content-center mb-4" id="atelier-semestres" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="atelier-s12-tab" data-bs-toggle="pill" data-bs-target="#atelier-s12" type="button" role="tab" aria-controls="atelier-s12" aria-selected="true">Semestre 1/2</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="atelier-s34-tab" data-bs-toggle="pill" data-bs-target="#atelier-s34" type="button" role="tab" aria-controls="atelier-s34" aria-selected="false">Semestre 3/4</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="atelier-s12" role="tabpanel" aria-labelledby="atelier-s12-tab">
+                            <h4 class="text-center text-accent mb-3">Ateliers - Travaux Dirigés (TD) et Pratiques (TP)</h4>
+                            <ul class="list-group tp-list col-md-8 mx-auto">
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 2 TD-1 Partie 1</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier2_TD1P1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 3 TD-1 Partie 2</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier3_TD1P2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 4 TD-2 Partie 1</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier4_TD2P1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 5 TD-3 Partie 2</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier5_TD3P2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 7 TD-4</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier7_TD4"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 7 TD-5</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier7_TD5"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 9 TP-1</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier9_TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 10 TP-1</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier10_TP1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 11 TP-1 Partie 1</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier11_TP1_P1"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 12 TP-1 Partie 2</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier12_TP1_P2"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 13 TP-1 Partie 3</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier13_TP1_P3"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier 14 TP-1 (HTML)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier14_TP1_HTML"><i class="fas fa-file-code"></i> HTML</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier Pilotage de Projet (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier_S2_PDP"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="tp-title">Atelier Git & GitHub (Semestre 2)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_atelier_S2_GIT_GITHUB"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="atelier-s34" role="tabpanel" aria-labelledby="atelier-s34-tab">
+                            <h4 class="text-center text-accent mb-3">Ateliers - Travaux Dirigés (TD) et Pratiques (TP)</h4>
+                            <p class="text-center text-muted fst-italic">Aucun document pour le moment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pcc" role="tabpanel" aria-labelledby="pcc-tab">
+                    <ul class="nav nav-pills semester-tabs justify-content-center mb-4" id="pcc-semestres" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pcc-s12-tab" data-bs-toggle="pill" data-bs-target="#pcc-s12" type="button" role="tab" aria-controls="pcc-s12" aria-selected="true">Semestre 1/2</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pcc-s34-tab" data-bs-toggle="pill" data-bs-target="#pcc-s34" type="button" role="tab" aria-controls="pcc-s34" aria-selected="false">Semestre 3/4</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="pcc-s12" role="tabpanel" aria-labelledby="pcc-s12-tab">
+                            <h4 class="text-center text-pcc mb-3">PCC</h4>
+                            <ul class="list-group tp-list col-md-8 mx-auto">
+                                <li class="list-group-item">
+                                    <span class="tp-title">ANSSI Sécurité Migration (Semestre 2) (Fichier html)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_PCC_ANSSI_Security_Migration"><i class="fas fa-file-code"></i> HTML</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="pcc-s34" role="tabpanel" aria-labelledby="pcc-s34-tab">
+                            <h4 class="text-center text-pcc mb-3">PCC</h4>
+                            <ul class="list-group tp-list col-md-8 mx-auto">
+                                <li class="list-group-item">
+                                    <span class="tp-title">TP1 MOOC (Semestre 3)</span>
+                                    <span class="tp-actions">
+                                        <a href="#" class="btn btn-primary" id="download_S3_PCC_TP1_MOOC"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+				<div class="tab-pane fade" id="stage1" role="tabpanel" aria-labelledby="stage1-tab">
+                    <h4 class="text-center text-stage mb-3">Stage 1</h4>
+                    <ul class="list-group tp-list col-md-8 mx-auto">
+                        <li class="list-group-item">
+                            <span class="tp-title">Annexe 1</span>
+                            <span class="tp-actions">
+                                <a href="#" class="btn btn-primary" id="download_stage_1_annexe_1"><i class="fas fa-file-pdf"></i> PDF</a>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="tp-title">Annexe 2</span>
+                            <span class="tp-actions">
+                                <a href="#" class="btn btn-primary" id="download_stage_1_annexe_2"><i class="fas fa-file-pdf"></i> PDF</a>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="tp-title">Annexe 3</span>
+                            <span class="tp-actions">
+                                <a href="#" class="btn btn-primary" id="download_stage_1_annexe_3"><i class="fas fa-file-pdf"></i> PDF</a>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="tp-title">Annexe 4</span>
+                            <span class="tp-actions">
+                                <a href="#" class="btn btn-primary" id="download_stage_1_annexe_4"><i class="fas fa-file-pdf"></i> PDF</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+				
+				<div class="tab-pane fade" id="divers" role="tabpanel" aria-labelledby="divers-tab">
+                    <h4 class="text-center text-dark mb-3">Documents Divers</h4>
+                    <ul class="list-group tp-list col-md-8 mx-auto">
+                        <li class="list-group-item">
+                            <span class="tp-title">Fiche FreeMind (Commandes Invite de Commande)</span>
+                            <span class="tp-actions">
+                                <a href="#" class="btn btn-primary" id="download_special_1"><i class="fas fa-file-image"></i> Image</a>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="tp-title">Ancien Contre-Rendu 1.2 (Format DOCX)</span>
+                            <span class="tp-actions">
+                                <a href="#" class="btn btn-primary" id="downloadTP2"><i class="fas fa-file-word"></i> Word</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- SECTION VEILLE TECHNOLOGIQUE MODIFIÉE -->
+    <section id="veille" class="section">
+        <div class="container">
+            <h2 class="section-title">Veille Technologique : Écrans & Résolution</h2>
+            
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-8 text-center">
+                    <p class="lead">
+                        Cette veille se concentre sur les innovations de rupture en colorimétrie et résolution, de l'abandon progressif des filtres couleurs à l'avènement des matrices PHOLED et Micro RGB.
+                    </p>
+                </div>
+            </div>
+
+            <!-- BLOC: METHODOLOGIE ET OUTILS -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="card shadow-sm border-0" style="border-radius: 12px; overflow: hidden;">
+                        <div class="card-header p-3" style="background-color: var(--dark-color); color: white;">
+                            <h4 class="mb-0 fs-5"><i class="fas fa-cogs text-accent me-2"></i> Méthodologie & Outils de Veille</h4>
+                        </div>
+                        <div class="card-body bg-white p-4">
+                            <div class="row">
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <h5 class="text-primary fs-6"><i class="fas fa-rss-square me-2"></i> Feedly (Agrégateur)</h5>
+                                    <p class="small text-muted mb-0">Suivi quotidien automatisé des flux RSS spécialisés (TechRadar, Les Numériques, Display Daily, Clubic). Classement des sources par dossiers thématiques : "Hardware" et "CES/IFA".</p>
+                                </div>
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <h5 class="text-primary fs-6"><i class="fas fa-bell me-2"></i> Google Alerts</h5>
+                                    <p class="small text-muted mb-0">Configuration d'alertes mail basées sur des opérateurs booléens précis : <code>"Micro LED" OR "OLED" AND "nits" AND "innovation"</code> pour capter immédiatement les fuites presse.</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="text-primary fs-6"><i class="fas fa-robot me-2"></i> IA (Deep Research)</h5>
+                                    <p class="small text-muted mb-0">Utilisation de la fonction <strong>Gemini Deep Research</strong> pour l'exploration en profondeur et la traduction de documentations techniques complexes ou de brevets. Idéal pour obtenir une synthèse précise sur des innovations de rupture.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion veille-list col-lg-10 mx-auto" id="accordionVeille">
+
+				<!-- ARTICLE : SEPTEMBRE 2026 -->
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="headingSept26">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSept26" aria-expanded="true" aria-controls="collapseSept26">
+							<strong>Septembre 2026</strong> &nbsp;-&nbsp; Alienware AW3926QW : L'OLED 5K sublimé par le RGB Stripe Tandem
+						</button>
+					</h2>
+					<div id="collapseSept26" class="accordion-collapse collapse show" aria-labelledby="headingSept26" data-bs-parent="#accordionVeille">
+						<div class="accordion-body">
+							<p>Officialisation de l'Alienware AW3926QW, un moniteur 39 pouces marquant une rupture technologique. Pour pallier les faiblesses traditionnelles de l'OLED (marquage et luminosité limitée), Dell déploie la dalle "Tandem OLED", superposant plusieurs couches émissives pour booster la luminosité (1 300 nits) et la durée de vie. De plus, l'intégration de la structure "RGB Stripe" élimine le sous-pixel blanc, assurant une netteté de texte parfaite, sans les franges colorées habituelles. Une dalle 5K (5120x2160) à 165Hz conçue pour conjuguer productivité professionnelle et gaming extrême.</p>
+							<p class="text-muted mb-0"><small>Source : HardwareCooking / IGN</small></p>
+							<p class="text-muted mb-0"><small>Outil utilisé : Extraction URL / Gemini Deep Research</small></p>
+							<a href="https://www.hardwarecooking.fr/alienware-aw3926qw-oled-5k-rgb-stripe/" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
+						</div>
+					</div>
+				</div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <strong>Janvier 2026</strong> &nbsp;-&nbsp; TCL X11L : L'innovation SQD-Mini LED (10 000 nits & 100% BT.2020)
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionVeille">
+                        <div class="accordion-body">
+                            <p>Présentation au CES 2026 du modèle phare X11L par TCL et sa filiale CSOT. Refusant la complexité de l'émission RGB directe, TCL choisit d'optimiser l'architecture LCD en associant un rétroéclairage bleu à des boîtes quantiques ultra-fines de seulement 5 nanomètres. Cette synergie chimique et optique permet d'éliminer la diaphonie chromatique, d'atteindre des pics de 10 000 nits grâce à 20 736 zones de gradation locale, et de couvrir 100 % de l'espace colorimétrique BT.2020.</p>
+                            <p class="text-muted mb-0"><small>Source : TCL / HomeCineSolutions / Clubic</small></p>
+                            <a href="https://www.homecinesolutions.fr/blog/posts/2061-ces-2026-tcl-devoile-le-x11l-un-televiseur-mini-led-plus-lumineux-et-plus-precis" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <strong>Janvier 2026</strong> &nbsp;-&nbsp; LG Micro RGB evo : La pureté spectrale absolue par émission directe
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionVeille">
+                        <div class="accordion-body">
+                            <p>LG bouleverse le marché LCD avec sa gamme Micro RGB evo (modèle MRGB95), lauréate d'un CES 2026 Innovation Award. Le rétroéclairage monolithique blanc est abandonné au profit de puces Micro LED rouges, vertes et bleues individuelles. Grâce au contrôle chirurgical assuré par le réseau neuronal du processeur Alpha 11 AI Gen 3, le système compense la diaphonie optique.</p>
+                            <p class="text-muted mb-0"><small>Source : LG Electronics / Mac4Ever</small></p>
+                            <a href="https://www.lgcorp.com/media/release/30227" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <strong>Janvier 2026</strong> &nbsp;-&nbsp; Hisense 116UXS : L'avènement du RGB Mini-LED Evo (110% BT.2020)
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionVeille">
+                        <div class="accordion-body">
+                            <p>Présentation au CES 2026 du modèle phare 116UXS intégrant l'architecture "RGB Mini-LED evo". Ce système ajoute une quatrième LED couleur (Cyan) aux côtés des traditionnelles RGB dans le rétroéclairage. Cette innovation permet d'atteindre une couverture record de 110 % de l'espace colorimétrique BT.2020.</p>
+                            <p class="text-muted mb-0"><small>Source : Hisense / CE Pro / TechRadar</small></p>
+                            <p class="text-muted mb-0"><small>Outil utilisé : Gemini Deep Research</small></p>
+                            <a href="https://www.cepro.com/news/hisense-expands-color-technology-across-tvs-microled-and-laser-projection-at-ces-2026/624447/" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <strong>Janvier 2026</strong> &nbsp;-&nbsp; Sony "True RGB" : Suppression totale des filtres couleurs
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionVeille">
+                        <div class="accordion-body">
+                            <p>Sony officialise sa technologie "True RGB" (probable série Bravia 10). Contrairement aux QLED utilisant un rétroéclairage bleu converti, cette technologie emploie des LEDs Rouges, Vertes et Bleues discrètes contrôlées directement par le processeur XR. Résultat : un volume colorimétrique quatre fois supérieur aux meilleurs OLED.</p>
+                            <p class="text-muted mb-0"><small>Source : Sony / Tom's Guide</small></p>
+                            <p class="text-muted mb-0"><small>Outil utilisé : Gemini Deep Research</small></p>
+                            <a href="https://www.tomsguide.com/tvs/the-sony-bravia-10-is-the-tv-im-most-excited-to-see-in-2026-and-it-could-make-oleds-look-obsolete)" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <strong>Décembre 2025</strong> &nbsp;-&nbsp; Samsung Micro RGB : La démocratisation de l'émission directe
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionVeille">
+                        <div class="accordion-body">
+                            <p>Annonce de la gamme R95H utilisant la technologie "Micro RGB". Les diodes sont inférieures à 100µm et émettent la lumière indépendamment, éliminant le besoin de filtres couleur traditionnels. Certifié par VDE pour atteindre 100 % du gamut BT.2020.</p>
+                            <p class="text-muted mb-0"><small>Source : Samsung Newsroom / ZDNet</small></p>
+                            <p class="text-muted mb-0"><small>Outil utilisé : Gemini Deep Research</small></p>
+                            <a href="https://news.samsung.com/au/samsung-expands-premium-micro-rgb-tv-lineup-for-2026-with-new-sizes-and-advanced-features" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            <strong>Septembre 2025</strong> &nbsp;-&nbsp; L'architecture RGB Mini-LED : vers la colorimétrie absolue
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionVeille">
+                        <div class="accordion-body">
+                            <p>Dévoilement du Hisense 116UX, premier écran remplaçant le filtre phosphore par un rétroéclairage actif composé de LED rouges, vertes et bleues indépendantes (TriChroma). Atteinte historique de 100 % de l'espace colorimétrique BT.2020 couplée à une luminosité de 8 000 nits.</p>
+                            <p class="text-muted mb-0"><small>Source : Hisense / TechRadar</small></p>
+                            <p class="text-muted mb-0"><small>Outil utilisé : Feedly & Gemini Deep Research</small></p>
+                            <a href="https://www.hisense-usa.com/post/once-again-number-one-in-large-screen-tvs-hisense-to-highlight-latest-rgb-miniled-innovation-at-ifa" class="btn btn-sm btn-outline-primary mt-2" target="_blank">Lire l'article complet</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="experience" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Mon expérience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 - Aujourd'hui</div>
+                        <h4>BTS SIO (Services Informatiques aux Organisations)</h4>
+                        <p>Lycée Dominique Villars, Gap</p>
+                        <p>Formation axée sur le développement et l'administration des systèmes d'information.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">NOVEMBRE 2024 - 1 MOIS (Stage)</div>
+                        <h4>Stage chez AZEVEDO Paysage</h4>
+                        <p>Bourg-Saint-Andéol (07)</p>
+                        <p>Travaux paysagers divers : création et entretien d'espaces verts.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">JUILLET 2024 - 1 MOIS (Stage)</div>
+                        <h4>Stage chez LECOCQ Cédric HORTICULTURE</h4>
+                        <p>Péronnes Les Binches (Belgique)</p>
+                        <p>Travaux d'horticulture avec plantation diverses et entretien des cultures.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">JUIN 2024 - 3 SEMAINES (Stage)</div>
+                        <h4>Stage chez PEREZ Paysagiste</h4>
+                        <p>Pierrelatte (07)</p>
+                        <p>Travaux paysagers divers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">MARS 2024 - 3 SEMAINES (Stage)</div>
+                        <h4>Stage commune de la Baume de Transit</h4>
+                        <p>(26)</p>
+                        <p>Entretien des espaces verts, entretien technique de la station d'épuration, création d'une zone de jeux.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">SEPTEMBRE 2022 - 2 MOIS (Saisonnier)</div>
+                        <h4>Vendanges</h4>
+                        <p>Restigné (37)</p>
+                        <p>Cueillette des raisins dans les vignes et logistique associée.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019 - 2022</div>
+                        <h4>Technicien d'usinage chez AML</h4>
+                        <p>Cinq-Mars-La-Pile (37)</p>
+                        <p>Travail sur machines-outils (fraisage, tournage), contrôle qualité des pièces, gestion des matières premières et réglages machines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Me contacter</h2>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="contact-info">
+                        <h3>Mes coordonnées</h3>
+                        <p><i class="fas fa-envelope contact-icon"></i> <a href="mailto:aubree.rom@gmail.com" class="text-dark text-decoration-none">aubree.rom@gmail.com</a></p>
+                        <p><i class="fas fa-phone contact-icon"></i> 07 82 76 25 15</p>
+                        <p><i class="fas fa-map-marker-alt contact-icon"></i> Région de Gap (05)</p>
+                    </div>
+                    <div class="mt-5">
+                        <h3>Réseaux sociaux</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link" target="_blank" data-bs-toggle="tooltip" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link" target="_blank" data-bs-toggle="tooltip" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link" target="_blank" data-bs-toggle="tooltip" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" target="_blank" data-bs-toggle="tooltip" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Votre nom" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Votre email" required>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Sujet" required>
+                        <textarea class="form-control" rows="5" placeholder="Votre message" required></textarea>
+                        <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; <span id="currentYear">2026</span> Romain Aubrée - Portfolio BTS SIO. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <a class="back-to-top" href="#home">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <div class="modal fade" id="projectModal1" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aménagements Paysagers et Horticoles</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27a3dcaa0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Aménagement paysager" class="img-fluid mb-4">
+                    <p>Réalisation de divers travaux paysagers et d'horticulture lors de mes stages professionnels (AZEVEDO Paysage, PEREZ Paysagiste, LECOCQ Cédric HORTICULTURE). J'ai développé des compétences dans la <strong>création</strong> (plantation, maçonnerie paysagère) et l'<strong>entretien</strong> (taille, tonte, traitements) des espaces verts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="projectModal3" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Projets d'usinage</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Usinage" class="img-fluid mb-4">
+                    <p>Pendant mes années en tant que <strong>technicien d'usinage chez AML</strong>, j'ai travaillé sur différentes machines-outils (fraisage, tournage) pour produire des pièces de haute précision. Mon rôle incluait le réglage des machines, la lecture de plans techniques, et le <strong>contrôle qualité rigoureux</strong> des pièces. Cette expérience témoigne de ma capacité à travailler avec <strong>précision</strong> et <strong>rigueur technique</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="projectModal4" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Projet de Virtualisation et Réseaux</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f94c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Projet SIO" class="img-fluid mb-4">
+                    <p>Dans le cadre de ma formation BTS SIO, j'ai participé à un projet visant à <strong>virtualiser l'infrastructure réseau</strong> d'une PME. Ce projet a impliqué :</p>
+                    <ul>
+                        <li>La configuration de serveurs sous Windows Server (Active Directory, DNS, DHCP).</li>
+                        <li>La mise en place de politiques de sécurité (pare-feu, GPO).</li>
+                        <li>L'utilisation de la virtualisation pour isoler différents environnements de travail.</li>
+                    </ul>
+                    <p>Ce travail a renforcé mes compétences en <strong>administration de systèmes</strong> et en <strong>gestion de projet informatique</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Navbar background change on scroll
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 50) {
+                    $('.navbar').addClass('shadow');
+                } else {
+                    $('.navbar').removeClass('shadow');
+                }
+                 // Back to top button visibility
+                if ($(this).scrollTop() > 200) {
+                    $('.back-to-top').addClass('active');
+                } else {
+                    $('.back-to-top').removeClass('active');
+                }
+            }).scroll(); // Trigger on load for initial state
+            
+            // Surligne dans le menu la section actuellement affichée
+            const $menuLinks = $('#navbarNav .nav-link');
+            function updateActiveMenu() {
+                const scrollPos = $(window).scrollTop() + 90;
+                let current = null;
+                $menuLinks.each(function() {
+                    const $section = $($(this).attr('href'));
+                    if ($section.length && $section.offset().top <= scrollPos) {
+                        current = this;
+                    }
+                });
+                // En bas de page, la dernière section (Contact) est active
+                if ($(window).scrollTop() + $(window).height() >= $(document).height() - 2) {
+                    current = $menuLinks.last()[0];
+                }
+                $menuLinks.removeClass('active');
+                $(current).addClass('active');
+            }
+            $(window).on('scroll', updateActiveMenu);
+            updateActiveMenu();
+
+            // Sur mobile, referme le menu après un clic sur un lien
+            $menuLinks.on('click', function() {
+                const menu = bootstrap.Collapse.getInstance(document.getElementById('navbarNav'));
+                if (menu) menu.hide();
+            });
+
+            // Back to top click
+            $('.back-to-top').click(function(e) {
+                 e.preventDefault();
+                $('html, body').animate({scrollTop: 0}, 800);
+            });
+            
+            // Animate skill bars on scroll
+            function animateSkills() {
+                 $('.skill-progress').each(function() {
+                     var position = $(this).offset().top;
+                     var scroll = $(window).scrollTop();
+                     var windowHeight = $(window).height();
+                     if (scroll > position - windowHeight + 150) { // Déclenche un peu plus tôt
+                         $(this).css('width', $(this).data('width'));
+                     }
+                 });
+             }
+
+            // Initialize skill bars width to 0
+            $('.skill-progress').css('width', '0');
+            $(window).scroll(animateSkills);
+            animateSkills(); // Trigger on load for elements already in view
+
+            
+            // Smooth scrolling for navigation links
+            $('a[href*="#"]').on('click', function(e) {
+                const target = $(this).attr('href');
+                
+                if (target.length > 1 && target.charAt(0) === '#') {
+                    e.preventDefault();
+                    const $targetElement = $(target);
+                    
+                    if ($targetElement.length) {
+                        $('html, body').animate(
+                            {
+                                scrollTop: $targetElement.offset().top - 70, // Offset for fixed navbar
+                            },
+                            500,
+                            'swing' // 'swing' est souvent plus agréable que 'linear'
+                        );
+                    }
+                }
+            });
+
+            // Re-use your existing download logic with updated IDs for the new structure
+            
+            // Function to handle downloads for clean code
+            function setupDownload(id, filename) {
+                // Check if element exists before adding listener to avoid errors
+                var element = document.getElementById(id);
+                if(element) {
+                    element.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const link = document.createElement('a');
+                        link.href = filename;
+                        link.download = filename;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
+                }
+            }
+
+            // General Downloads
+            setupDownload('downloadCV', 'Moderne Professionnel C.V.pdf');
+            setupDownload('download_special_1', 'mindfree_commande.png');
+            setupDownload('downloadTP2', 'TP1.2.docx'); // Kept for divers
+            setupDownload('download_stc_B1TP7_file', 'stc_B1TP7_file.zip'); // B1 TP7 Sotoca (File)
+
+            // Bloc 1 Downloads
+            setupDownload('downloadTP1', 'TP1.1.pdf'); // B1 TP1 Sotoca
+            setupDownload('downloadTP3', 'TP1.3.pdf'); // B1 TP3 Sotoca
+            setupDownload('download_bvl_B1TP1', 'bvl_B1TP2.pdf'); // B1 TP1 Beauvallet
+            setupDownload('download_stc_B1TP2', 'stc_B1TP2.pdf'); // B1 TP2 Sotoca
+            setupDownload('download_bvl_B1TP3', 'bvl_B1TP3.pdf'); // B1 TP3 Beauvallet
+            setupDownload('download_bvl_B1TP4', 'bvl_B1TP4.pdf'); // B1 TP4 Beauvallet
+            setupDownload('download_stc_B1TP5', 'stc_B1TP5.pdf'); // B1 TP5 Sotoca
+            setupDownload('download_bvl_B1TP5', 'bvl_B1TP5.pdf'); // B1 TP5 Beauvallet
+            setupDownload('download_stc_B1TP6', 'stc_B1TP6.pdf'); // B1 TP6 Sotoca
+            setupDownload('download_bvl_B1TP6', 'bvl_B1TP6.pdf'); // B1 TP6 Beauvallet
+            setupDownload('download_stc_B1TP7', 'stc_B1TP7.pdf'); // B1 TP7 Sotoca
+            setupDownload('download_bvl_B1TP7', 'bvl_B1TP7.pdf'); // B1 TP7 Beauvallet
+			setupDownload('download_bvl_B1TP8', 'bvl_B1TP8.pdf'); // B1 TP8 Beauvallet
+			setupDownload('download_bvl_B1TP9', 'bvl_B1TP9.pdf'); // B1 TP9 Beauvallet
+			setupDownload('download_bvl_B1TP10', 'bvl_B1TP10.pdf'); // B1 TP10 Beauvallet
+			setupDownload('download_bvl_B1TP11', 'bvl_B1TP11.pdf'); // B1 TP11 Beauvallet
+			setupDownload('download_bvl_B1TD4', 'bvl_B1TD4.pdf'); // B1 TD4 (BDD LECLERC) Beauvallet
+			setupDownload('download_bvl_B1TD5', 'bvl_B1TD5.pdf'); // B1 TD5 (BDD ZOO) Beauvallet
+			setupDownload('download_stc_B1TP21', 'stc_B1TP21.pdf'); // B1 TP21 Sotoca
+			setupDownload('download_stc_B1TP_UBUNTU', 'stc_B1_TP_UBUNTU.pdf'); // B1 TP UNBUNTU Sotoca
+			setupDownload('download_bvl_S2_B1TD6', 'bvl_S2_B1TD_SQL.pdf'); // B1 TD6 (SQL LECLERC P2) Beauvallet semestre 2
+			setupDownload('download_stc_S2_B1TP1', 'stc_S2_B1TP1.pdf'); // B1 TP1 Sotoca (Semestre 2)
+			setupDownload('download_stc_S2_B1_TP2', 'stc_S2_B1_TP2.pdf'); // B1 TP2 Sotoca (Semestre 2)
+			setupDownload('download_bvl_S2_B1_GestionDroitSQL', 'bvl_S2_B1TP-GestionDroit-SQL.pdf'); // B1 TP Gestion Droit SQL Beauvallet semestre 2
+			setupDownload('download_stc_S2_B1_TP3', 'stc_S2_B1_TP3.pdf'); // B1 TP3 Sotoca (Semestre 2)
+			setupDownload('download_bvl_S2_B1_TP_PHP1', 'bvl_S2_B1TP-PHP-1.pdf'); // B1 TP php intro Beauvallet semestre 2
+			setupDownload('download_bvl_S2_B1_TP_PHP_BASES_PROGRAMMATION', 'bvl_S2_B1TP-PHP-BaseEtProgrammation.pdf');// B1 TP bases + programmation php Beauvallet semestre 2
+			setupDownload('download_bvl_S2_B1_TP_PHP_BASES_PROGRAMMATION_files', 'bvl_S2_B1TP-PHP-BaseEtProgrammation_files.zip');// B1 TP bases + programmation php Beauvallet semestre 2 File (fichier .php)
+			setupDownload('download_bvl_S2_B1_TP_PHP_TRANSMISSION_ACCES_BDD', 'bvl_S2_B1TP-PHP-TransmissionEtAccèsBDD.pdf');// B1 TP transmission + acces bdd php Beauvallet semestre 2
+			setupDownload('download_bvl_S2_B1_TP_PHP_TRANSMISSION_ACCES_BDD_files', 'bvl_S2_B1TP-PHP-TransmissionEtAccèsBDD_files.zip');// B1 TP transmission + acces bdd php Beauvallet semestre 2 File (fichier .php)
+			setupDownload('download_stc_S2_B1_TP4', 'stc_S2_B1_TP4.pdf'); // B1 TP4 Sotoca (Semestre 2)
+			setupDownload('download_bvl_S2_B1_TP5', 'bvl_S2_B1TP5.pdf'); // B1 TP5 beauvallet php (Semestre 2)
+			setupDownload('download_bvl_S2_B1_TP5_files', 'bvl_S2_B1TP5_files.zip'); // B1 TP5 beauvallet php (files fichiers php + sql) (Semestre 2)
+			setupDownload('download_bvl_S2_B1_TP_Films', 'bvl_S2_B1TP_Films.pdf'); // B1 TP Films beauvallet html (Semestre 2)
+			setupDownload('download_bvl_S2_B1_TP_Films_files', 'bvl_S2_B1TP_Films_files.zip'); // B1 TP films beauvallet html (files fichiers html, css, images, lib) (Semestre 2)
+			setupDownload('download_stc_S2_B1_TP5', 'stc_S2_B1_TP5.pdf'); // B1 TP5 Sotoca (Semestre 2)
+			setupDownload('download_stc_S2_B1_TP5_files', 'stc_S2_B1_TP5_files.zip'); // B1 TP5 Sotoca fichier htm rapports GPO (Semestre 2)
+			
+
+			// Semestre 3
+			setupDownload('download_stc_S3_B1_TP1', 'stc/B1/Semestre 3/stc_S3_B1_TP1.pdf'); // B1 TP sotoca semestre 3
+			setupDownload('download_bvl_S3_B1_TP_PGI', 'bvl/B1/Semestre 3/bvl_S3_B1_TP_PGI.pdf'); // B1 tp bvl semestre 3 excel PGI
+			setupDownload('download_bvl_S3_B1_TP_PGI_files', 'bvl/B1/Semestre 3/bvl_S3_B1_TP_PGI_files.xls'); //
+			setupDownload('download_stc_S3_B1_TP2', 'stc/B1/Semestre 3/stc_S3_B1_TP2.pdf'); // B1 TP 2sotoca semestre 3 glpi
+			setupDownload('download_bvl_S3_B1_TP_RESTAURANT', 'bvl/B1/Semestre 3/bvl_S3_B1_TD_Restaurant.pdf'); // B1 tp bvl semestre 3 excel PGI
+			setupDownload('download_bvl_S3_B1_TP_RESTAURANT_files', 'bvl/B1/Semestre 3/bvl_S3_B1_TD_Restaurant_files.xlsx'); //
+			setupDownload('download_stc_S3_B1_TP3', 'stc/B1/Semestre 3/stc_S3_B1_TP3.pdf'); // B1 TP3 sotoca semestre 3 glpi
+
+			// Bloc 2 Downloads
+			setupDownload('download_bvl_B2TD2', 'bvl_B2TD2.pdf'); // B2 TD2 Beauvallet
+			setupDownload('download_bvl_B2TD2_files', 'bvl_B2TD2_files.zip'); // B2 TD2 Files (Projet IntelliJ) Beauvallet
+			setupDownload('download_bvl_B2TD3', 'bvl_B2TD3.pdf'); // B2 TD3 Beauvallet
+			setupDownload('download_bvl_B2TD3_files', 'bvl_B2TD3_files.zip'); // B2 TD3 Files (Projet IntelliJ) Beauvallet
+			setupDownload('download_bvl_S2_B2TD_Introduction_UML', 'bvl_S2_B2TD_Introduction_UML.pdf'); // B2 TD Introduction UML Beauvallet
+			setupDownload('download_bvl_S2_B2TD_Introduction_UML_files', 'bvl_S2_B2TD_Introduction_UML_files.zip'); // B2 TD Introduction UML Files Beauvallet
+			setupDownload('download_bvl_S2_B2TD4', 'bvl_S2_B2TD4.pdf'); // B2 TD4 Beauvallet
+			setupDownload('download_bvl_B2TD4_files', 'bvl_B2TD4_files.zip'); // B2 TD4 Files (Projet IntelliJ + etc) Beauvallet
+			setupDownload('download_bvl_S2_B2TD7', 'bvl_S2_B2TD7.pdf'); // B2 TD7 Beauvallet
+			setupDownload('download_bvl_B2TD7_files', 'bvl_S2_B2TD7_files.zip'); // B2 TD7 Files (Projet IntelliJ + etc) Beauvallet
+			setupDownload('download_bvl_S2_B2_TD_Modelisation_Avancee', 'bvl_S2_B2TD_Modélisation_Avancée_SQL.pdf'); // B2 TD Modélisation_Avancée_SQL Beauvallet
+			setupDownload('download_bvl_S2_B2TD_SQL_Avancee', 'bvl_S2_B2TD_SQL_Avancé.pdf'); // B2 TD SQL Avancée Beauvallet
+			setupDownload('download_bvl_S2_B2TD_SQL_Avancee_files', 'bvl_S2_B2TD_SQL_Avancé_files.zip'); //  TD SQL Avancée Files (Projet .php) Beauvallet
+			setupDownload('download_bvl_S2_B2TP8', 'bvl_S2_B2TP8.pdf'); //  TP 8 CARDEALER Beauvallet
+			setupDownload('download_bvl_S2_B2_MVC_PHP_TD1', 'bvl_S2_B2_MVC_PHP_TD1.pdf'); //  TP MVC PHP TD1 Beauvallet
+			setupDownload('download_bvl_S2_B2_MVC_PHP_TD1_files', 'bvl_S2_B2_MVC_PHP_TD1_files.zip'); //  TP MVC PHP TD1 (files) (php + html) Beauvallet
+			
+			//semestre 3
+			setupDownload('download_bvl_S3_B2_TP_Symfony', 'B2/Semestre 3/bvl_S3_B2_TP_Symfony.pdf');
+			setupDownload('download_bvl_S3_B2_TD_Initiation_PL_pgSQL', 'B2/Semestre 3/bvl_S3_B2_TD_Initiation_PL_pgSQL.pdf');
+			setupDownload('download_bvl_S3_B2_TD_Initiation_PL_pgSQL_files', 'B2/Semestre 3/bvl_S3_B2_TD_Initiation_PL_pgSQL_files.sql');
+			setupDownload('download_bvl_S3_B2_TD2_MVC_PHP', 'B2/Semestre 3/bvl_S3_B2_MVC_PHP_TD2.pdf'); 
+			setupDownload('download_bvl_S3_B2_TP_Dart_Flutter', 'B2/Semestre 3/bvl_S3_B2_TP_Dart_Flutter.pdf');
+			setupDownload('download_bvl_S3_B2_TD3_MVC_PHP', 'B2/Semestre 3/bvl_S3_B2_MVC_PHP_TD3.pdf'); 
+			setupDownload('download_bvl_S3_B2_TP1_Interface_Utilisateur_1_3', 'B2/Semestre 3/bvl_S3_B2_TP1_Interface_Utilisateur_1-3.pdf');
+			setupDownload('download_bvl_S3_B2_TD2_Initiation_PL_pgSQL', 'B2/Semestre 3/bvl_S3_B2_TD2_PL_pgSQL.pdf');
+			setupDownload('download_bvl_S3_B2_TD2_Initiation_PL_pgSQL_files', 'B2/Semestre 3/bvl_S3_B2_TD2_PL_pgSQL_files.sql');
+			
+            // Bloc 3 Downloads
+            setupDownload('download_stc_B3TP1', 'stc_B3TP1.pdf'); // B3 TP1 Sotoca
+            setupDownload('download_stc_B3TP2-4', 'stc_B3TP2-4.pdf'); // B3 TP2-4 Sotoca
+            setupDownload('download_bvl_B3TP1', 'bvl_B3TP1.pdf'); // B3 TP1 Beauvallet
+            setupDownload('download_stc_B3TP5', 'stc_B3TP5.pdf'); // B3 TP5 Sotoca
+            setupDownload('download_bvl_B3TP2', 'bvl_B3TP2.pdf'); // B3 TP2 Beauvallet
+            setupDownload('download_bvl_B3TP3', 'bvl_B3TP3.pdf'); // B3 TP3 Beauvallet
+            setupDownload('download_stc_B3TP6', 'stc_B3TP6.pdf'); // B3 TP6 Sotoca
+            setupDownload('download_bvl_B3TH2TP1', 'bvl_B3TH2TP1.pdf'); // B3 TH2 TP1 Beauvallet
+			setupDownload('download_bvl_B3TH2TP2', 'bvl_B3TH2TP2.pdf'); // B3 TH2 TP2 Beauvallet
+			setupDownload('download_bvl_B3CH4TH3TD1', 'bvl_B3CH4TH3TD1.pdf'); // B3 CH4 TH3 TD1 Beauvallet
+			setupDownload('download_bvl_B3CH4TH3TD2', 'bvl_B3CH4TH3TD2.pdf'); // B3 CH4 TH3 TD2 Beauvallet
+			setupDownload('download_bvl_B3CH4TH3TD3', 'bvl_B3CH4TH3TD3.pdf'); // B3 CH4 TH3 TD3 Beauvallet
+			setupDownload('download_bvl_S2_B3CH5TH3TD1', 'bvl_S2_B3CH5TH3TD1.pdf'); // B3 S2 CH5 TH3 TD1 Beauvallet
+			setupDownload('download_bvl_S2_B3TP8', 'bvl_S2_B3TP8.pdf'); // B3 S2 TP8 Beauvallet
+			setupDownload('download_bvl_S2_B3TP8_files', 'bvl_S2_B3TP8_files.pkt'); // B3 S2 TP8 (fichier packet tracer) Beauvallet
+			setupDownload('download_stc_S2_B3TP16', 'stc_S2_B3TP16.pdf'); // B3 TP16 Sotoca (semestre 2) hack deep freeze
+			setupDownload('download_bvl_S2_B3TP_Exo_Application_Chapitre_5', 'bvl_S2_B3TP_ExerciceApplication.pdf'); // B3 S2 TP exo application chapitre 5 Beauvallet
+			setupDownload('download_bvl_S2_B3TP_Exo_Application_Chapitre_5_files', 'bvl_S2_B3TP_ExerciceApplication_files.pkt'); // B3 S2 TP exo application chapitre 5 (fichier packet tracer) Beauvallet
+			setupDownload('download_bvl_S2_B3TD9', 'bvl_S2_B3TD9.pdf'); // B3 S2 TP exo application chapitre 5 Beauvallet
+			setupDownload('download_stc_S2_B3TP24', 'stc_S2_B3TP24.pdf'); // B3 TP24 Sotoca (semestre 2) BurpSuite
+			setupDownload('download_bvl_S3_B3TP1', 'bvl/B3/Semestre 3/bvl_S3_B3_TP1_Installation_Kali.pdf'); // B3 S3 bvl kali linux install (tp 1)
+
+            // Atelier Downloads
+            setupDownload('download_atelier2_TD1P1', 'Atelier2TD1P1.pdf');
+            setupDownload('download_atelier3_TD1P2', 'Atelier3TD1P2.pdf');
+            setupDownload('download_atelier4_TD2P1', 'Atelier4TD2P1.pdf');
+            setupDownload('download_atelier5_TD3P2', 'Atelier5TD3P2.pdf');
+            setupDownload('download_atelier7_TD4', 'Atelier7TD4.pdf');
+            setupDownload('download_atelier7_TD5', 'Atelier7TD5.pdf');
+			setupDownload('download_atelier9_TP1', 'Atelier9TP1.pdf');
+			setupDownload('download_atelier10_TP1', 'Atelier10TP1.pdf');
+			setupDownload('download_atelier11_TP1_P1', 'Atelier11TP1P1.pdf');
+			setupDownload('download_atelier12_TP1_P2', 'Atelier12TP1P2.pdf');
+			setupDownload('download_atelier13_TP1_P3', 'Atelier13TP1P3.pdf');
+			setupDownload('download_atelier14_TP1_HTML', 'Atelier14TP1_HTML.html');
+			//beauvallet
+			setupDownload('download_atelier_S2_PDP', 'Atelier_S2_PDP.pdf');
+			setupDownload('download_atelier_S2_GIT_GITHUB', 'Atelier_S2_Git-GitHub.pdf');
+
+
+
+			// PCC
+			setupDownload('download_PCC_ANSSI_Security_Migration', 'ANSSI_Migration_Security.html');
+			setupDownload('download_S3_PCC_TP1_MOOC', 'Autre/stc_S3_PCC_TP1_MOOC.pdf');
+			
+
+			// Stage 1
+			setupDownload('download_stage_1_annexe_1', 'stage_1_Ligne1.pdf');
+			setupDownload('download_stage_1_annexe_2', 'stage_1_Ligne2.pdf');
+			setupDownload('download_stage_1_annexe_3', 'stage_1_Ligne3.pdf');
+			setupDownload('download_stage_1_annexe_4', 'stage_1_Ligne4.pdf');
+            
+            // Recherche dans les TP (tous onglets et semestres confondus)
+            function normalize(str) {
+                return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+            }
+
+            function tpContext(item) {
+                const $item = $(item);
+                const parts = [];
+                const blocId = $item.closest('#tpTabsContent > .tab-pane').attr('id');
+                parts.push($('#' + blocId + '-tab').text().trim());
+                const semId = $item.closest('[id$="-s12"], [id$="-s34"]').attr('id');
+                if (semId) parts.push($('#' + semId + '-tab').text().trim());
+                const prof = $item.closest('.col-md-6').find('h4').first().text().trim();
+                if (prof) parts.push(prof);
+                return parts.join(' · ');
+            }
+
+            $('#tpSearch').on('input', function() {
+                const terms = normalize($(this).val().trim()).split(/\s+/).filter(Boolean);
+                const $list = $('#tpSearchList').empty();
+                if (!terms.length) {
+                    $('#tpSearchResults').addClass('d-none');
+                    $('#tpTabs, #tpTabsContent').removeClass('d-none');
+                    return;
+                }
+                let count = 0;
+                $('#tpTabsContent .tp-list .list-group-item').each(function() {
+                    const context = tpContext(this);
+                    const tips = $(this).find('a[title]').map(function() { return this.title; }).get().join(' ');
+                    const haystack = normalize($(this).find('.tp-title').text() + ' ' + tips + ' ' + context);
+                    if (!terms.every(t => haystack.includes(t))) return;
+                    count++;
+                    const $clone = $(this).clone();
+                    // Les boutons copiés renvoient vers les boutons d'origine (pas d'id en double)
+                    $clone.find('a[id]').each(function() {
+                        $(this).attr('data-source', this.id).removeAttr('id');
+                    });
+                    $clone.find('.tp-title').append($('<small class="tp-context">').text(context));
+                    $list.append($clone);
+                });
+                $('#tpSearchCount').text(count ? count + ' résultat' + (count > 1 ? 's' : '') : 'Aucun TP ne correspond à cette recherche.');
+                $('#tpTabs, #tpTabsContent').addClass('d-none');
+                $('#tpSearchResults').removeClass('d-none');
+            });
+
+            $('#tpSearchList').on('click', 'a[data-source]', function(e) {
+                if ($(this).attr('href') !== '#') return; // GitHub / Drive : ouverture normale
+                e.preventDefault();
+                document.getElementById($(this).attr('data-source')).click();
+            });
+
+            // Année du pied de page toujours à jour
+            $('#currentYear').text(new Date().getFullYear());
+
+            // Form submission
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                alert('Votre message a été envoyé avec succès ! Je vous répondrai très prochainement.');
+                this.reset();
+            });
+            
+            // Initialize tooltips
+            $('[data-bs-toggle="tooltip"]').tooltip();
+
+        });
+    </script>
+</body>
+</html>
